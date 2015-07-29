@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
+import tahmuras.InstantiationConstraint;
 import tahmuras.TahmurasPackage;
 
 /**
@@ -88,7 +88,10 @@ public class InstantiationConstraintItemProvider extends ConstraintItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_InstantiationConstraint_type");
+		String label = ((InstantiationConstraint)object).getMinizincConstraint();
+		return label == null || label.length() == 0 ?
+			getString("_UI_InstantiationConstraint_type") :
+			getString("_UI_InstantiationConstraint_type") + " " + label;
 	}
 	
 

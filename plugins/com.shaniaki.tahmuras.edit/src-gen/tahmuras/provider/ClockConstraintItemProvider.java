@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
+import tahmuras.ClockConstraint;
 import tahmuras.TahmurasPackage;
 
 /**
@@ -111,7 +111,10 @@ public class ClockConstraintItemProvider extends ConstraintItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ClockConstraint_type");
+		String label = ((ClockConstraint)object).getMinizincConstraint();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ClockConstraint_type") :
+			getString("_UI_ClockConstraint_type") + " " + label;
 	}
 	
 

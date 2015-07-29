@@ -2,6 +2,7 @@
  */
 package tahmuras.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -302,6 +303,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConstraint_MinizincConstraint() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDecisionVariable() {
 		return decisionVariableEClass;
 	}
@@ -582,6 +592,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		logicalClockEClass = createEClass(LOGICAL_CLOCK);
 
 		constraintEClass = createEClass(CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__MINIZINC_CONSTRAINT);
 
 		decisionVariableEClass = createEClass(DECISION_VARIABLE);
 
@@ -672,6 +683,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEClass(logicalClockEClass, LogicalClock.class, "LogicalClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraint_MinizincConstraint(), ecorePackage.getEString(), "minizincConstraint", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decisionVariableEClass, DecisionVariable.class, "DecisionVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

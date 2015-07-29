@@ -10,14 +10,18 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import tahmuras.Constraint;
+import tahmuras.TahmurasPackage;
 
 /**
  * This is the item provider adapter for a {@link tahmuras.Constraint} object.
@@ -54,8 +58,31 @@ public class ConstraintItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMinizincConstraintPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Minizinc Constraint feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMinizincConstraintPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Constraint_minizincConstraint_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_minizincConstraint_feature", "_UI_Constraint_type"),
+				 TahmurasPackage.Literals.CONSTRAINT__MINIZINC_CONSTRAINT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -77,7 +104,10 @@ public class ConstraintItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Constraint_type");
+		String label = ((Constraint)object).getMinizincConstraint();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Constraint_type") :
+			getString("_UI_Constraint_type") + " " + label;
 	}
 	
 
@@ -91,6 +121,12 @@ public class ConstraintItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Constraint.class)) {
+			case TahmurasPackage.CONSTRAINT__MINIZINC_CONSTRAINT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

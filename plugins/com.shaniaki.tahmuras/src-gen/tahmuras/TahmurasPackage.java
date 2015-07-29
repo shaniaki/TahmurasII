@@ -2,6 +2,7 @@
  */
 package tahmuras;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -277,13 +278,22 @@ public interface TahmurasPackage extends EPackage {
 	int CONSTRAINT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__MINIZINC_CONSTRAINT = 0;
+
+	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = 0;
+	int CONSTRAINT_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -333,6 +343,15 @@ public interface TahmurasPackage extends EPackage {
 	int CLOCK_CONSTRAINT = 6;
 
 	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_CONSTRAINT__MINIZINC_CONSTRAINT = CONSTRAINT__MINIZINC_CONSTRAINT;
+
+	/**
 	 * The feature id for the '<em><b>Logicalclock</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -377,6 +396,15 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	int INSTANTIATION_CONSTRAINT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANTIATION_CONSTRAINT__MINIZINC_CONSTRAINT = CONSTRAINT__MINIZINC_CONSTRAINT;
 
 	/**
 	 * The feature id for the '<em><b>Decisionvariable</b></em>' reference list.
@@ -853,6 +881,17 @@ public interface TahmurasPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Constraint#getMinizincConstraint <em>Minizinc Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Minizinc Constraint</em>'.
+	 * @see tahmuras.Constraint#getMinizincConstraint()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EAttribute getConstraint_MinizincConstraint();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.DecisionVariable <em>Decision Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1250,6 +1289,14 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Minizinc Constraint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__MINIZINC_CONSTRAINT = eINSTANCE.getConstraint_MinizincConstraint();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.DecisionVariableImpl <em>Decision Variable</em>}' class.

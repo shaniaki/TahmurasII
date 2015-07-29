@@ -19,7 +19,9 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//PlatformComponent/costmetric"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//LogicalClock"/>
-    <genClasses ecoreClass="tahmuras.ecore#//Constraint"/>
+    <genClasses ecoreClass="tahmuras.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Constraint/constraint"/>
+    </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//DecisionVariable"/>
     <genClasses ecoreClass="tahmuras.ecore#//ClockConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ClockConstraint/logicalclock"/>
