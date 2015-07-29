@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated tahmuras -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="tahmuras.presentation.TahmurasModelWizardID"
+            name="%_UI_TahmurasModelWizard_label"
+            class="tahmuras.presentation.TahmurasModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TahmurasModelFile.gif">
+         <description>%_UI_TahmurasModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated tahmuras -->
+      <editor
+            id="tahmuras.presentation.TahmurasEditorID"
+            name="%_UI_TahmurasEditor_label"
+            icon="icons/full/obj16/TahmurasModelFile.gif"
+            extensions="tahmuras"
+            class="tahmuras.presentation.TahmurasEditor"
+            contributorClass="tahmuras.presentation.TahmurasActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
