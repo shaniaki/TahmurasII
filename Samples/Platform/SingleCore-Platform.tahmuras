@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tahmuras:PlatformModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tahmuras="http://www.shaniaki.com/tahmuras" name="singlecore">
+  <platformcomponent name="pe">
+    <constraint xsi:type="tahmuras:InstantiationConstraint" minizincConstraint="" name="max_cycle"/>
+    <logicalclock name="exec"/>
+    <decisionvariable name="cycle" domain="{10,20,40}" size="10"/>
+    <costmetric name="area" domain="1..10" minizincConstraint=""/>
+  </platformcomponent>
+  <costmetric name="area" domain="1..10"/>
+  <constraint xsi:type="tahmuras:InstantiationConstraint" minizincConstraint="" name="one_pe_instance"/>
+</tahmuras:PlatformModel>

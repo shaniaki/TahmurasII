@@ -123,7 +123,10 @@ public class PlatformComponentItemProvider extends ComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PlatformComponent_type");
+		String label = ((PlatformComponent)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PlatformComponent_type") :
+			getString("_UI_PlatformComponent_type") + " " + label;
 	}
 	
 

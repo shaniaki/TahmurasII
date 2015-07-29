@@ -59,6 +59,7 @@ public class ConstraintItemProvider
 			super.getPropertyDescriptors(object);
 
 			addMinizincConstraintPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -86,6 +87,28 @@ public class ConstraintItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Constraint_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_name_feature", "_UI_Constraint_type"),
+				 TahmurasPackage.Literals.CONSTRAINT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Constraint.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,7 +127,7 @@ public class ConstraintItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Constraint)object).getMinizincConstraint();
+		String label = ((Constraint)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Constraint_type") :
 			getString("_UI_Constraint_type") + " " + label;
@@ -124,6 +147,7 @@ public class ConstraintItemProvider
 
 		switch (notification.getFeatureID(Constraint.class)) {
 			case TahmurasPackage.CONSTRAINT__MINIZINC_CONSTRAINT:
+			case TahmurasPackage.CONSTRAINT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

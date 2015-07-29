@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -66,6 +67,7 @@ public class ApplicationModelItemProvider
 			addPerformancemetricPropertyDescriptor(object);
 			addConstraintPropertyDescriptor(object);
 			addBinaryrelationPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -159,6 +161,28 @@ public class ApplicationModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ApplicationModel_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationModel_name_feature", "_UI_ApplicationModel_type"),
+				 TahmurasPackage.Literals.APPLICATION_MODEL__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -210,7 +234,10 @@ public class ApplicationModelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ApplicationModel_type");
+		String label = ((ApplicationModel)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ApplicationModel_type") :
+			getString("_UI_ApplicationModel_type") + " " + label;
 	}
 	
 
@@ -226,6 +253,9 @@ public class ApplicationModelItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ApplicationModel.class)) {
+			case TahmurasPackage.APPLICATION_MODEL__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case TahmurasPackage.APPLICATION_MODEL__APPLICATIONCOMPONENT:
 			case TahmurasPackage.APPLICATION_MODEL__PERFORMANCEMETRIC:
 			case TahmurasPackage.APPLICATION_MODEL__CONSTRAINT:

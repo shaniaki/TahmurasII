@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tahmuras:ApplicationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tahmuras="http://www.shaniaki.com/tahmuras" name="simplets">
+  <applicationcomponent name="task1">
+    <constraint xsi:type="tahmuras:ClockConstraint" name="ts_periodic"/>
+    <logicalclock name="start"/>
+    <logicalclock name="end"/>
+    <decisionvariable name="period" domain="1..10"/>
+  </applicationcomponent>
+  <applicationcomponent name="task2">
+    <constraint xsi:type="tahmuras:ClockConstraint" name="ts_periodic"/>
+    <logicalclock name="start"/>
+    <logicalclock name="end"/>
+    <decisionvariable name="period" domain="1..10"/>
+  </applicationcomponent>
+  <applicationcomponent name="task3">
+    <constraint xsi:type="tahmuras:ClockConstraint" name="ts_periodic"/>
+    <logicalclock name="start"/>
+    <logicalclock name="end"/>
+    <decisionvariable name="period" domain="1..10"/>
+  </applicationcomponent>
+</tahmuras:ApplicationModel>

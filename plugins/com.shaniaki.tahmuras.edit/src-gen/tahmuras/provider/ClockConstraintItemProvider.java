@@ -111,7 +111,7 @@ public class ClockConstraintItemProvider extends ConstraintItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ClockConstraint)object).getMinizincConstraint();
+		String label = ((ClockConstraint)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ClockConstraint_type") :
 			getString("_UI_ClockConstraint_type") + " " + label;

@@ -123,7 +123,10 @@ public class ApplicationComponentItemProvider extends ComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ApplicationComponent_type");
+		String label = ((ApplicationComponent)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ApplicationComponent_type") :
+			getString("_UI_ApplicationComponent_type") + " " + label;
 	}
 	
 

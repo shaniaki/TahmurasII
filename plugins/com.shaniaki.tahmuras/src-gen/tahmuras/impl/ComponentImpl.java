@@ -4,6 +4,7 @@ package tahmuras.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -33,6 +35,7 @@ import tahmuras.TahmurasPackage;
  *   <li>{@link tahmuras.impl.ComponentImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link tahmuras.impl.ComponentImpl#getLogicalclock <em>Logicalclock</em>}</li>
  *   <li>{@link tahmuras.impl.ComponentImpl#getDecisionvariable <em>Decisionvariable</em>}</li>
+ *   <li>{@link tahmuras.impl.ComponentImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +70,26 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected EList<DecisionVariable> decisionvariable;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,6 +151,27 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TahmurasPackage.COMPONENT__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -155,6 +199,8 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 				return getLogicalclock();
 			case TahmurasPackage.COMPONENT__DECISIONVARIABLE:
 				return getDecisionvariable();
+			case TahmurasPackage.COMPONENT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -180,6 +226,9 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 				getDecisionvariable().clear();
 				getDecisionvariable().addAll((Collection<? extends DecisionVariable>)newValue);
 				return;
+			case TahmurasPackage.COMPONENT__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,6 +250,9 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 			case TahmurasPackage.COMPONENT__DECISIONVARIABLE:
 				getDecisionvariable().clear();
 				return;
+			case TahmurasPackage.COMPONENT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -219,8 +271,26 @@ public abstract class ComponentImpl extends MinimalEObjectImpl.Container impleme
 				return logicalclock != null && !logicalclock.isEmpty();
 			case TahmurasPackage.COMPONENT__DECISIONVARIABLE:
 				return decisionvariable != null && !decisionvariable.isEmpty();
+			case TahmurasPackage.COMPONENT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ComponentImpl

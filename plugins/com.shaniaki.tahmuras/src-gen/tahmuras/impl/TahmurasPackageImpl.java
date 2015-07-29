@@ -249,6 +249,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getComponent_Name() {
+		return (EAttribute)componentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getApplicationComponent() {
 		return applicationComponentEClass;
 	}
@@ -294,6 +303,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLogicalClock_Name() {
+		return (EAttribute)logicalClockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConstraint() {
 		return constraintEClass;
 	}
@@ -312,8 +330,44 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConstraint_Name() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDecisionVariable() {
 		return decisionVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDecisionVariable_Name() {
+		return (EAttribute)decisionVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDecisionVariable_Domain() {
+		return (EAttribute)decisionVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDecisionVariable_Size() {
+		return (EAttribute)decisionVariableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -368,6 +422,33 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 */
 	public EClass getMetric() {
 		return metricEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMetric_Name() {
+		return (EAttribute)metricEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMetric_Domain() {
+		return (EAttribute)metricEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMetric_MinizincConstraint() {
+		return (EAttribute)metricEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -438,6 +519,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPlatformModel_Name() {
+		return (EAttribute)platformModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getApplicationModel() {
 		return applicationModelEClass;
 	}
@@ -476,6 +566,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 */
 	public EReference getApplicationModel_Binaryrelation() {
 		return (EReference)applicationModelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationModel_Name() {
+		return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -582,6 +681,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(componentEClass, COMPONENT__CONSTRAINT);
 		createEReference(componentEClass, COMPONENT__LOGICALCLOCK);
 		createEReference(componentEClass, COMPONENT__DECISIONVARIABLE);
+		createEAttribute(componentEClass, COMPONENT__NAME);
 
 		applicationComponentEClass = createEClass(APPLICATION_COMPONENT);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__PERFORMANCEMETRIC);
@@ -590,11 +690,16 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(platformComponentEClass, PLATFORM_COMPONENT__COSTMETRIC);
 
 		logicalClockEClass = createEClass(LOGICAL_CLOCK);
+		createEAttribute(logicalClockEClass, LOGICAL_CLOCK__NAME);
 
 		constraintEClass = createEClass(CONSTRAINT);
 		createEAttribute(constraintEClass, CONSTRAINT__MINIZINC_CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__NAME);
 
 		decisionVariableEClass = createEClass(DECISION_VARIABLE);
+		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__NAME);
+		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__DOMAIN);
+		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__SIZE);
 
 		clockConstraintEClass = createEClass(CLOCK_CONSTRAINT);
 		createEReference(clockConstraintEClass, CLOCK_CONSTRAINT__LOGICALCLOCK);
@@ -604,6 +709,9 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(instantiationConstraintEClass, INSTANTIATION_CONSTRAINT__DECISIONVARIABLE);
 
 		metricEClass = createEClass(METRIC);
+		createEAttribute(metricEClass, METRIC__NAME);
+		createEAttribute(metricEClass, METRIC__DOMAIN);
+		createEAttribute(metricEClass, METRIC__MINIZINC_CONSTRAINT);
 
 		costMetricEClass = createEClass(COST_METRIC);
 
@@ -614,12 +722,14 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(platformModelEClass, PLATFORM_MODEL__COSTMETRIC);
 		createEReference(platformModelEClass, PLATFORM_MODEL__CONSTRAINT);
 		createEReference(platformModelEClass, PLATFORM_MODEL__BINARYRELATION);
+		createEAttribute(platformModelEClass, PLATFORM_MODEL__NAME);
 
 		applicationModelEClass = createEClass(APPLICATION_MODEL);
 		createEReference(applicationModelEClass, APPLICATION_MODEL__APPLICATIONCOMPONENT);
 		createEReference(applicationModelEClass, APPLICATION_MODEL__PERFORMANCEMETRIC);
 		createEReference(applicationModelEClass, APPLICATION_MODEL__CONSTRAINT);
 		createEReference(applicationModelEClass, APPLICATION_MODEL__BINARYRELATION);
+		createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
 
 		binaryRelationEClass = createEClass(BINARY_RELATION);
 		createEReference(binaryRelationEClass, BINARY_RELATION__COMPONENT);
@@ -673,6 +783,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getComponent_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Logicalclock(), this.getLogicalClock(), null, "logicalclock", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Decisionvariable(), this.getDecisionVariable(), null, "decisionvariable", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationComponentEClass, ApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplicationComponent_Performancemetric(), this.getPerformanceMetric(), null, "performancemetric", null, 0, -1, ApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -681,11 +792,16 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getPlatformComponent_Costmetric(), this.getCostMetric(), null, "costmetric", null, 0, -1, PlatformComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(logicalClockEClass, LogicalClock.class, "LogicalClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLogicalClock_Name(), ecorePackage.getEString(), "name", null, 0, 1, LogicalClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstraint_MinizincConstraint(), ecorePackage.getEString(), "minizincConstraint", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decisionVariableEClass, DecisionVariable.class, "DecisionVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDecisionVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecisionVariable_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecisionVariable_Size(), ecorePackage.getEInt(), "size", "1", 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clockConstraintEClass, ClockConstraint.class, "ClockConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClockConstraint_Logicalclock(), this.getLogicalClock(), null, "logicalclock", null, 1, -1, ClockConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -695,6 +811,9 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getInstantiationConstraint_Decisionvariable(), this.getDecisionVariable(), null, "decisionvariable", null, 1, -1, InstantiationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(metricEClass, Metric.class, "Metric", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMetric_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetric_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetric_MinizincConstraint(), ecorePackage.getEString(), "minizincConstraint", null, 0, 1, Metric.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(costMetricEClass, CostMetric.class, "CostMetric", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -705,12 +824,14 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getPlatformModel_Costmetric(), this.getCostMetric(), null, "costmetric", null, 0, -1, PlatformModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlatformModel_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, PlatformModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlatformModel_Binaryrelation(), this.getBinaryRelation(), null, "binaryrelation", null, 0, -1, PlatformModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlatformModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, PlatformModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplicationModel_Applicationcomponent(), this.getApplicationComponent(), null, "applicationcomponent", null, 1, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationModel_Performancemetric(), this.getPerformanceMetric(), null, "performancemetric", null, 0, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationModel_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationModel_Binaryrelation(), this.getBinaryRelation(), null, "binaryrelation", null, 0, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(binaryRelationEClass, BinaryRelation.class, "BinaryRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryRelation_Component(), this.getComponent(), null, "component", null, 2, -1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

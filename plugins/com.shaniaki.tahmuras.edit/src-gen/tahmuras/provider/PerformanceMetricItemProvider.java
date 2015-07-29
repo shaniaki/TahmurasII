@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import tahmuras.PerformanceMetric;
 
 /**
  * This is the item provider adapter for a {@link tahmuras.PerformanceMetric} object.
@@ -62,7 +63,10 @@ public class PerformanceMetricItemProvider extends MetricItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PerformanceMetric_type");
+		String label = ((PerformanceMetric)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PerformanceMetric_type") :
+			getString("_UI_PerformanceMetric_type") + " " + label;
 	}
 	
 

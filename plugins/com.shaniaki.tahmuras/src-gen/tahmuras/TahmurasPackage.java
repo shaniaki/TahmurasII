@@ -94,13 +94,22 @@ public interface TahmurasPackage extends EPackage {
 	int COMPONENT__DECISIONVARIABLE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__NAME = 3;
+
+	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 3;
+	int COMPONENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -147,6 +156,15 @@ public interface TahmurasPackage extends EPackage {
 	 * @ordered
 	 */
 	int APPLICATION_COMPONENT__DECISIONVARIABLE = COMPONENT__DECISIONVARIABLE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_COMPONENT__NAME = COMPONENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Performancemetric</b></em>' containment reference list.
@@ -213,6 +231,15 @@ public interface TahmurasPackage extends EPackage {
 	int PLATFORM_COMPONENT__DECISIONVARIABLE = COMPONENT__DECISIONVARIABLE;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLATFORM_COMPONENT__NAME = COMPONENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Costmetric</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,13 +277,22 @@ public interface TahmurasPackage extends EPackage {
 	int LOGICAL_CLOCK = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_CLOCK__NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Logical Clock</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOGICAL_CLOCK_FEATURE_COUNT = 0;
+	int LOGICAL_CLOCK_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Logical Clock</em>' class.
@@ -287,13 +323,22 @@ public interface TahmurasPackage extends EPackage {
 	int CONSTRAINT__MINIZINC_CONSTRAINT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = 1;
+	int CONSTRAINT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -315,13 +360,40 @@ public interface TahmurasPackage extends EPackage {
 	int DECISION_VARIABLE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_VARIABLE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_VARIABLE__DOMAIN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_VARIABLE__SIZE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Decision Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_VARIABLE_FEATURE_COUNT = 0;
+	int DECISION_VARIABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Decision Variable</em>' class.
@@ -350,6 +422,15 @@ public interface TahmurasPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLOCK_CONSTRAINT__MINIZINC_CONSTRAINT = CONSTRAINT__MINIZINC_CONSTRAINT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_CONSTRAINT__NAME = CONSTRAINT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Logicalclock</b></em>' reference list.
@@ -407,6 +488,15 @@ public interface TahmurasPackage extends EPackage {
 	int INSTANTIATION_CONSTRAINT__MINIZINC_CONSTRAINT = CONSTRAINT__MINIZINC_CONSTRAINT;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANTIATION_CONSTRAINT__NAME = CONSTRAINT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Decisionvariable</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,13 +534,40 @@ public interface TahmurasPackage extends EPackage {
 	int METRIC = 8;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METRIC__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METRIC__DOMAIN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METRIC__MINIZINC_CONSTRAINT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Metric</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METRIC_FEATURE_COUNT = 0;
+	int METRIC_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Metric</em>' class.
@@ -470,6 +587,33 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	int COST_METRIC = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COST_METRIC__NAME = METRIC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COST_METRIC__DOMAIN = METRIC__DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COST_METRIC__MINIZINC_CONSTRAINT = METRIC__MINIZINC_CONSTRAINT;
 
 	/**
 	 * The number of structural features of the '<em>Cost Metric</em>' class.
@@ -498,6 +642,33 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	int PERFORMANCE_METRIC = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMANCE_METRIC__NAME = METRIC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMANCE_METRIC__DOMAIN = METRIC__DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Minizinc Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMANCE_METRIC__MINIZINC_CONSTRAINT = METRIC__MINIZINC_CONSTRAINT;
 
 	/**
 	 * The number of structural features of the '<em>Performance Metric</em>' class.
@@ -564,13 +735,22 @@ public interface TahmurasPackage extends EPackage {
 	int PLATFORM_MODEL__BINARYRELATION = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLATFORM_MODEL__NAME = 4;
+
+	/**
 	 * The number of structural features of the '<em>Platform Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLATFORM_MODEL_FEATURE_COUNT = 4;
+	int PLATFORM_MODEL_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Platform Model</em>' class.
@@ -628,13 +808,22 @@ public interface TahmurasPackage extends EPackage {
 	int APPLICATION_MODEL__BINARYRELATION = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_MODEL__NAME = 4;
+
+	/**
 	 * The number of structural features of the '<em>Application Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_MODEL_FEATURE_COUNT = 4;
+	int APPLICATION_MODEL_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Application Model</em>' class.
@@ -819,6 +1008,17 @@ public interface TahmurasPackage extends EPackage {
 	EReference getComponent_Decisionvariable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Component#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.Component#getName()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EAttribute getComponent_Name();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.ApplicationComponent <em>Application Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -871,6 +1071,17 @@ public interface TahmurasPackage extends EPackage {
 	EClass getLogicalClock();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.LogicalClock#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.LogicalClock#getName()
+	 * @see #getLogicalClock()
+	 * @generated
+	 */
+	EAttribute getLogicalClock_Name();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -892,6 +1103,17 @@ public interface TahmurasPackage extends EPackage {
 	EAttribute getConstraint_MinizincConstraint();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Constraint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.Constraint#getName()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EAttribute getConstraint_Name();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.DecisionVariable <em>Decision Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -900,6 +1122,39 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDecisionVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.DecisionVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.DecisionVariable#getName()
+	 * @see #getDecisionVariable()
+	 * @generated
+	 */
+	EAttribute getDecisionVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.DecisionVariable#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain</em>'.
+	 * @see tahmuras.DecisionVariable#getDomain()
+	 * @see #getDecisionVariable()
+	 * @generated
+	 */
+	EAttribute getDecisionVariable_Domain();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.DecisionVariable#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @see tahmuras.DecisionVariable#getSize()
+	 * @see #getDecisionVariable()
+	 * @generated
+	 */
+	EAttribute getDecisionVariable_Size();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.ClockConstraint <em>Clock Constraint</em>}'.
@@ -963,6 +1218,39 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMetric();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Metric#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.Metric#getName()
+	 * @see #getMetric()
+	 * @generated
+	 */
+	EAttribute getMetric_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Metric#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain</em>'.
+	 * @see tahmuras.Metric#getDomain()
+	 * @see #getMetric()
+	 * @generated
+	 */
+	EAttribute getMetric_Domain();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.Metric#getMinizincConstraint <em>Minizinc Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Minizinc Constraint</em>'.
+	 * @see tahmuras.Metric#getMinizincConstraint()
+	 * @see #getMetric()
+	 * @generated
+	 */
+	EAttribute getMetric_MinizincConstraint();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.CostMetric <em>Cost Metric</em>}'.
@@ -1039,6 +1327,17 @@ public interface TahmurasPackage extends EPackage {
 	EReference getPlatformModel_Binaryrelation();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.PlatformModel#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.PlatformModel#getName()
+	 * @see #getPlatformModel()
+	 * @generated
+	 */
+	EAttribute getPlatformModel_Name();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.ApplicationModel <em>Application Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1091,6 +1390,17 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getApplicationModel_Binaryrelation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.ApplicationModel#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.ApplicationModel#getName()
+	 * @see #getApplicationModel()
+	 * @generated
+	 */
+	EAttribute getApplicationModel_Name();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.BinaryRelation <em>Binary Relation</em>}'.
@@ -1235,6 +1545,14 @@ public interface TahmurasPackage extends EPackage {
 		EReference COMPONENT__DECISIONVARIABLE = eINSTANCE.getComponent_Decisionvariable();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT__NAME = eINSTANCE.getComponent_Name();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.ApplicationComponentImpl <em>Application Component</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1281,6 +1599,14 @@ public interface TahmurasPackage extends EPackage {
 		EClass LOGICAL_CLOCK = eINSTANCE.getLogicalClock();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOGICAL_CLOCK__NAME = eINSTANCE.getLogicalClock_Name();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.ConstraintImpl <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1299,6 +1625,14 @@ public interface TahmurasPackage extends EPackage {
 		EAttribute CONSTRAINT__MINIZINC_CONSTRAINT = eINSTANCE.getConstraint_MinizincConstraint();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__NAME = eINSTANCE.getConstraint_Name();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.DecisionVariableImpl <em>Decision Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1307,6 +1641,30 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DECISION_VARIABLE = eINSTANCE.getDecisionVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION_VARIABLE__NAME = eINSTANCE.getDecisionVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION_VARIABLE__DOMAIN = eINSTANCE.getDecisionVariable_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION_VARIABLE__SIZE = eINSTANCE.getDecisionVariable_Size();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.ClockConstraintImpl <em>Clock Constraint</em>}' class.
@@ -1361,6 +1719,30 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EClass METRIC = eINSTANCE.getMetric();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METRIC__NAME = eINSTANCE.getMetric_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METRIC__DOMAIN = eINSTANCE.getMetric_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Minizinc Constraint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METRIC__MINIZINC_CONSTRAINT = eINSTANCE.getMetric_MinizincConstraint();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.CostMetricImpl <em>Cost Metric</em>}' class.
@@ -1425,6 +1807,14 @@ public interface TahmurasPackage extends EPackage {
 		EReference PLATFORM_MODEL__BINARYRELATION = eINSTANCE.getPlatformModel_Binaryrelation();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLATFORM_MODEL__NAME = eINSTANCE.getPlatformModel_Name();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.ApplicationModelImpl <em>Application Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1465,6 +1855,14 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EReference APPLICATION_MODEL__BINARYRELATION = eINSTANCE.getApplicationModel_Binaryrelation();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION_MODEL__NAME = eINSTANCE.getApplicationModel_Name();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.BinaryRelationImpl <em>Binary Relation</em>}' class.

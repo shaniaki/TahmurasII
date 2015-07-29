@@ -11,13 +11,18 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import tahmuras.DecisionVariable;
+import tahmuras.TahmurasPackage;
 
 /**
  * This is the item provider adapter for a {@link tahmuras.DecisionVariable} object.
@@ -54,8 +59,77 @@ public class DecisionVariableItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addDomainPropertyDescriptor(object);
+			addSizePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DecisionVariable_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DecisionVariable_name_feature", "_UI_DecisionVariable_type"),
+				 TahmurasPackage.Literals.DECISION_VARIABLE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Domain feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DecisionVariable_domain_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DecisionVariable_domain_feature", "_UI_DecisionVariable_type"),
+				 TahmurasPackage.Literals.DECISION_VARIABLE__DOMAIN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DecisionVariable_size_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DecisionVariable_size_feature", "_UI_DecisionVariable_type"),
+				 TahmurasPackage.Literals.DECISION_VARIABLE__SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -77,7 +151,10 @@ public class DecisionVariableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DecisionVariable_type");
+		String label = ((DecisionVariable)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DecisionVariable_type") :
+			getString("_UI_DecisionVariable_type") + " " + label;
 	}
 	
 
@@ -91,6 +168,14 @@ public class DecisionVariableItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(DecisionVariable.class)) {
+			case TahmurasPackage.DECISION_VARIABLE__NAME:
+			case TahmurasPackage.DECISION_VARIABLE__DOMAIN:
+			case TahmurasPackage.DECISION_VARIABLE__SIZE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

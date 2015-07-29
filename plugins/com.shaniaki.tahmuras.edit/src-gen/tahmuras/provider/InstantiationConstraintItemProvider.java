@@ -88,7 +88,7 @@ public class InstantiationConstraintItemProvider extends ConstraintItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InstantiationConstraint)object).getMinizincConstraint();
+		String label = ((InstantiationConstraint)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_InstantiationConstraint_type") :
 			getString("_UI_InstantiationConstraint_type") + " " + label;

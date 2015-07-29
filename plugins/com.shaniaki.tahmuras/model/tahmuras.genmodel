@@ -11,6 +11,7 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//Component/constraint"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//Component/logicalclock"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//Component/decisionvariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Component/name"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//ApplicationComponent">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ApplicationComponent/performancemetric"/>
@@ -18,11 +19,18 @@
     <genClasses ecoreClass="tahmuras.ecore#//PlatformComponent">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//PlatformComponent/costmetric"/>
     </genClasses>
-    <genClasses ecoreClass="tahmuras.ecore#//LogicalClock"/>
-    <genClasses ecoreClass="tahmuras.ecore#//Constraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Constraint/constraint"/>
+    <genClasses ecoreClass="tahmuras.ecore#//LogicalClock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//LogicalClock/name"/>
     </genClasses>
-    <genClasses ecoreClass="tahmuras.ecore#//DecisionVariable"/>
+    <genClasses ecoreClass="tahmuras.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Constraint/minizincConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Constraint/name"/>
+    </genClasses>
+    <genClasses ecoreClass="tahmuras.ecore#//DecisionVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/size"/>
+    </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//ClockConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ClockConstraint/logicalclock"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ClockConstraint/decisionvariable"/>
@@ -30,7 +38,11 @@
     <genClasses ecoreClass="tahmuras.ecore#//InstantiationConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//InstantiationConstraint/decisionvariable"/>
     </genClasses>
-    <genClasses ecoreClass="tahmuras.ecore#//Metric"/>
+    <genClasses ecoreClass="tahmuras.ecore#//Metric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Metric/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Metric/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//Metric/minizincConstraint"/>
+    </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//CostMetric"/>
     <genClasses ecoreClass="tahmuras.ecore#//PerformanceMetric"/>
     <genClasses ecoreClass="tahmuras.ecore#//PlatformModel">
@@ -38,12 +50,14 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//PlatformModel/costmetric"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//PlatformModel/constraint"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//PlatformModel/binaryrelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//PlatformModel/name"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//ApplicationModel">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ApplicationModel/applicationcomponent"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ApplicationModel/performancemetric"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ApplicationModel/constraint"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ApplicationModel/binaryrelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//ApplicationModel/name"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//BinaryRelation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BinaryRelation/component"/>

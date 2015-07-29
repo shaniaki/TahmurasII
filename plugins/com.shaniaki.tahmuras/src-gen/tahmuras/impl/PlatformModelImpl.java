@@ -4,6 +4,7 @@ package tahmuras.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -35,6 +37,7 @@ import tahmuras.TahmurasPackage;
  *   <li>{@link tahmuras.impl.PlatformModelImpl#getCostmetric <em>Costmetric</em>}</li>
  *   <li>{@link tahmuras.impl.PlatformModelImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link tahmuras.impl.PlatformModelImpl#getBinaryrelation <em>Binaryrelation</em>}</li>
+ *   <li>{@link tahmuras.impl.PlatformModelImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +82,26 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 	 * @ordered
 	 */
 	protected EList<BinaryRelation> binaryrelation;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +175,27 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TahmurasPackage.PLATFORM_MODEL__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -183,6 +227,8 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 				return getConstraint();
 			case TahmurasPackage.PLATFORM_MODEL__BINARYRELATION:
 				return getBinaryrelation();
+			case TahmurasPackage.PLATFORM_MODEL__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,6 +258,9 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 				getBinaryrelation().clear();
 				getBinaryrelation().addAll((Collection<? extends BinaryRelation>)newValue);
 				return;
+			case TahmurasPackage.PLATFORM_MODEL__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -236,6 +285,9 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 			case TahmurasPackage.PLATFORM_MODEL__BINARYRELATION:
 				getBinaryrelation().clear();
 				return;
+			case TahmurasPackage.PLATFORM_MODEL__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -256,8 +308,26 @@ public class PlatformModelImpl extends MinimalEObjectImpl.Container implements P
 				return constraint != null && !constraint.isEmpty();
 			case TahmurasPackage.PLATFORM_MODEL__BINARYRELATION:
 				return binaryrelation != null && !binaryrelation.isEmpty();
+			case TahmurasPackage.PLATFORM_MODEL__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //PlatformModelImpl
