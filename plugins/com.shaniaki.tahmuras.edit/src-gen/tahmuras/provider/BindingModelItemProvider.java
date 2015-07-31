@@ -65,6 +65,7 @@ public class BindingModelItemProvider
 
 			addBinaryrelationPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addConstraintPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,6 +110,28 @@ public class BindingModelItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Constraint feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConstraintPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BindingModel_constraint_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BindingModel_constraint_feature", "_UI_BindingModel_type"),
+				 TahmurasPackage.Literals.BINDING_MODEL__CONSTRAINT,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -2,17 +2,21 @@
  */
 package tahmuras.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import tahmuras.BinaryRelation;
 import tahmuras.BindingModel;
+import tahmuras.Constraint;
 import tahmuras.TahmurasPackage;
 
 /**
@@ -25,6 +29,7 @@ import tahmuras.TahmurasPackage;
  * <ul>
  *   <li>{@link tahmuras.impl.BindingModelImpl#getBinaryrelation <em>Binaryrelation</em>}</li>
  *   <li>{@link tahmuras.impl.BindingModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link tahmuras.impl.BindingModelImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +63,16 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraint()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> constraint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,6 +162,18 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Constraint> getConstraint() {
+		if (constraint == null) {
+			constraint = new EObjectResolvingEList<Constraint>(Constraint.class, this, TahmurasPackage.BINDING_MODEL__CONSTRAINT);
+		}
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -168,6 +195,8 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 				return getBinaryrelation();
 			case TahmurasPackage.BINDING_MODEL__NAME:
 				return getName();
+			case TahmurasPackage.BINDING_MODEL__CONSTRAINT:
+				return getConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -177,6 +206,7 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -185,6 +215,10 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 				return;
 			case TahmurasPackage.BINDING_MODEL__NAME:
 				setName((String)newValue);
+				return;
+			case TahmurasPackage.BINDING_MODEL__CONSTRAINT:
+				getConstraint().clear();
+				getConstraint().addAll((Collection<? extends Constraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -204,6 +238,9 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 			case TahmurasPackage.BINDING_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case TahmurasPackage.BINDING_MODEL__CONSTRAINT:
+				getConstraint().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -220,6 +257,8 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 				return binaryrelation != null;
 			case TahmurasPackage.BINDING_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case TahmurasPackage.BINDING_MODEL__CONSTRAINT:
+				return constraint != null && !constraint.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

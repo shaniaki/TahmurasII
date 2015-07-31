@@ -62,6 +62,7 @@ public class DecisionVariableItemProvider
 			addNamePropertyDescriptor(object);
 			addDomainPropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,6 +134,28 @@ public class DecisionVariableItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DecisionVariable_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DecisionVariable_value_feature", "_UI_DecisionVariable_type"),
+				 TahmurasPackage.Literals.DECISION_VARIABLE__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns DecisionVariable.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +196,7 @@ public class DecisionVariableItemProvider
 			case TahmurasPackage.DECISION_VARIABLE__NAME:
 			case TahmurasPackage.DECISION_VARIABLE__DOMAIN:
 			case TahmurasPackage.DECISION_VARIABLE__SIZE:
+			case TahmurasPackage.DECISION_VARIABLE__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

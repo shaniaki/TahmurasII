@@ -375,6 +375,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDecisionVariable_Value() {
+		return (EAttribute)decisionVariableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClockConstraint() {
 		return clockConstraintEClass;
 	}
@@ -618,6 +627,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getBinaryRelation_Name() {
+		return (EAttribute)binaryRelationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBindingModel() {
 		return bindingModelEClass;
 	}
@@ -638,6 +656,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 */
 	public EAttribute getBindingModel_Name() {
 		return (EAttribute)bindingModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBindingModel_Constraint() {
+		return (EReference)bindingModelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -736,6 +763,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__NAME);
 		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__DOMAIN);
 		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__SIZE);
+		createEAttribute(decisionVariableEClass, DECISION_VARIABLE__VALUE);
 
 		clockConstraintEClass = createEClass(CLOCK_CONSTRAINT);
 		createEReference(clockConstraintEClass, CLOCK_CONSTRAINT__LOGICALCLOCK);
@@ -771,10 +799,12 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(binaryRelationEClass, BINARY_RELATION__COMPONENT);
 		createEAttribute(binaryRelationEClass, BINARY_RELATION__DOMAIN);
 		createEAttribute(binaryRelationEClass, BINARY_RELATION__CODOMAIN);
+		createEAttribute(binaryRelationEClass, BINARY_RELATION__NAME);
 
 		bindingModelEClass = createEClass(BINDING_MODEL);
 		createEReference(bindingModelEClass, BINDING_MODEL__BINARYRELATION);
 		createEAttribute(bindingModelEClass, BINDING_MODEL__NAME);
+		createEReference(bindingModelEClass, BINDING_MODEL__CONSTRAINT);
 
 		dseModelEClass = createEClass(DSE_MODEL);
 		createEReference(dseModelEClass, DSE_MODEL__BINDINGMODEL);
@@ -842,6 +872,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEAttribute(getDecisionVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDecisionVariable_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDecisionVariable_Size(), ecorePackage.getEInt(), "size", "1", 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecisionVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, DecisionVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clockConstraintEClass, ClockConstraint.class, "ClockConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClockConstraint_Logicalclock(), this.getLogicalClock(), null, "logicalclock", null, 1, -1, ClockConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -877,10 +908,12 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getBinaryRelation_Component(), this.getComponent(), null, "component", null, 2, -1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBinaryRelation_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBinaryRelation_Codomain(), ecorePackage.getEString(), "codomain", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryRelation_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bindingModelEClass, BindingModel.class, "BindingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBindingModel_Binaryrelation(), this.getBinaryRelation(), null, "binaryrelation", null, 1, 1, BindingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, BindingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBindingModel_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, BindingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dseModelEClass, DSEModel.class, "DSEModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDSEModel_Bindingmodel(), this.getBindingModel(), null, "bindingmodel", null, 1, 1, DSEModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

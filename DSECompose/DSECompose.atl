@@ -24,7 +24,8 @@ rule BinRel {
 		tb : tahmuras!BinaryRelation (
 			codomain <- sb.codomain,
 			component <- sb.component,
-			domain <- sb.domain
+			domain <- sb.domain,
+			name <- sb.name
 		)
 }
 
@@ -154,6 +155,7 @@ rule BindingModel {
 	to 
 		tb : tahmuras!BindingModel (
 			binaryrelation <- sb.binaryrelation,
-			name <- sb.name
+			name <- sb.name,
+			constraint <- sb.constraint
 		)
 }

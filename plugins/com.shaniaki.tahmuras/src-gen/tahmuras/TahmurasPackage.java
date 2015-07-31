@@ -387,13 +387,22 @@ public interface TahmurasPackage extends EPackage {
 	int DECISION_VARIABLE__SIZE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_VARIABLE__VALUE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Decision Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_VARIABLE_FEATURE_COUNT = 3;
+	int DECISION_VARIABLE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Decision Variable</em>' class.
@@ -872,13 +881,22 @@ public interface TahmurasPackage extends EPackage {
 	int BINARY_RELATION__CODOMAIN = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_RELATION__NAME = 3;
+
+	/**
 	 * The number of structural features of the '<em>Binary Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINARY_RELATION_FEATURE_COUNT = 3;
+	int BINARY_RELATION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Binary Relation</em>' class.
@@ -918,13 +936,22 @@ public interface TahmurasPackage extends EPackage {
 	int BINDING_MODEL__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_MODEL__CONSTRAINT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Binding Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_MODEL_FEATURE_COUNT = 2;
+	int BINDING_MODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Binding Model</em>' class.
@@ -1191,6 +1218,17 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDecisionVariable_Size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.DecisionVariable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see tahmuras.DecisionVariable#getValue()
+	 * @see #getDecisionVariable()
+	 * @generated
+	 */
+	EAttribute getDecisionVariable_Value();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.ClockConstraint <em>Clock Constraint</em>}'.
@@ -1482,6 +1520,17 @@ public interface TahmurasPackage extends EPackage {
 	EAttribute getBinaryRelation_Codomain();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.BinaryRelation#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.BinaryRelation#getName()
+	 * @see #getBinaryRelation()
+	 * @generated
+	 */
+	EAttribute getBinaryRelation_Name();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.BindingModel <em>Binding Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1512,6 +1561,17 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBindingModel_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tahmuras.BindingModel#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Constraint</em>'.
+	 * @see tahmuras.BindingModel#getConstraint()
+	 * @see #getBindingModel()
+	 * @generated
+	 */
+	EReference getBindingModel_Constraint();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.DSEModel <em>DSE Model</em>}'.
@@ -1747,6 +1807,14 @@ public interface TahmurasPackage extends EPackage {
 		EAttribute DECISION_VARIABLE__SIZE = eINSTANCE.getDecisionVariable_Size();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION_VARIABLE__VALUE = eINSTANCE.getDecisionVariable_Value();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.ClockConstraintImpl <em>Clock Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1979,6 +2047,14 @@ public interface TahmurasPackage extends EPackage {
 		EAttribute BINARY_RELATION__CODOMAIN = eINSTANCE.getBinaryRelation_Codomain();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINARY_RELATION__NAME = eINSTANCE.getBinaryRelation_Name();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.BindingModelImpl <em>Binding Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2003,6 +2079,14 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BINDING_MODEL__NAME = eINSTANCE.getBindingModel_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINDING_MODEL__CONSTRAINT = eINSTANCE.getBindingModel_Constraint();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.DSEModelImpl <em>DSE Model</em>}' class.

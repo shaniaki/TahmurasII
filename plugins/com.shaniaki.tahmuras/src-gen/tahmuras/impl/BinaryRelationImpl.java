@@ -29,6 +29,7 @@ import tahmuras.TahmurasPackage;
  *   <li>{@link tahmuras.impl.BinaryRelationImpl#getComponent <em>Component</em>}</li>
  *   <li>{@link tahmuras.impl.BinaryRelationImpl#getDomain <em>Domain</em>}</li>
  *   <li>{@link tahmuras.impl.BinaryRelationImpl#getCodomain <em>Codomain</em>}</li>
+ *   <li>{@link tahmuras.impl.BinaryRelationImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,6 +81,26 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String codomain = CODOMAIN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +180,27 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TahmurasPackage.BINARY_RELATION__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -168,6 +210,8 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 				return getDomain();
 			case TahmurasPackage.BINARY_RELATION__CODOMAIN:
 				return getCodomain();
+			case TahmurasPackage.BINARY_RELATION__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,6 +235,9 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 			case TahmurasPackage.BINARY_RELATION__CODOMAIN:
 				setCodomain((String)newValue);
 				return;
+			case TahmurasPackage.BINARY_RELATION__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -212,6 +259,9 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 			case TahmurasPackage.BINARY_RELATION__CODOMAIN:
 				setCodomain(CODOMAIN_EDEFAULT);
 				return;
+			case TahmurasPackage.BINARY_RELATION__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -230,6 +280,8 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 				return DOMAIN_EDEFAULT == null ? domain != null : !DOMAIN_EDEFAULT.equals(domain);
 			case TahmurasPackage.BINARY_RELATION__CODOMAIN:
 				return CODOMAIN_EDEFAULT == null ? codomain != null : !CODOMAIN_EDEFAULT.equals(codomain);
+			case TahmurasPackage.BINARY_RELATION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -248,6 +300,8 @@ public class BinaryRelationImpl extends MinimalEObjectImpl.Container implements 
 		result.append(domain);
 		result.append(", codomain: ");
 		result.append(codomain);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

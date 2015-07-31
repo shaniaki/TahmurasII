@@ -22,6 +22,7 @@ import tahmuras.TahmurasPackage;
  *   <li>{@link tahmuras.impl.DecisionVariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link tahmuras.impl.DecisionVariableImpl#getDomain <em>Domain</em>}</li>
  *   <li>{@link tahmuras.impl.DecisionVariableImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link tahmuras.impl.DecisionVariableImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,6 +83,25 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected int size = SIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VALUE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,6 +190,27 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(String newValue) {
+		String oldValue = value;
+		value = newValue;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TahmurasPackage.DECISION_VARIABLE__VALUE, oldValue, value));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -179,6 +220,8 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 				return getDomain();
 			case TahmurasPackage.DECISION_VARIABLE__SIZE:
 				return getSize();
+			case TahmurasPackage.DECISION_VARIABLE__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,6 +242,9 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TahmurasPackage.DECISION_VARIABLE__SIZE:
 				setSize((Integer)newValue);
+				return;
+			case TahmurasPackage.DECISION_VARIABLE__VALUE:
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -221,6 +267,9 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 			case TahmurasPackage.DECISION_VARIABLE__SIZE:
 				setSize(SIZE_EDEFAULT);
 				return;
+			case TahmurasPackage.DECISION_VARIABLE__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -239,6 +288,8 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 				return DOMAIN_EDEFAULT == null ? domain != null : !DOMAIN_EDEFAULT.equals(domain);
 			case TahmurasPackage.DECISION_VARIABLE__SIZE:
 				return size != SIZE_EDEFAULT;
+			case TahmurasPackage.DECISION_VARIABLE__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -259,6 +310,8 @@ public class DecisionVariableImpl extends MinimalEObjectImpl.Container implement
 		result.append(domain);
 		result.append(", size: ");
 		result.append(size);
+		result.append(", value: ");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

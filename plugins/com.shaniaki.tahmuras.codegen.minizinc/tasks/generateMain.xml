@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generateMain" name="com.shaniaki.tahmuras.codegen.minizinc">
-    <property name="ECLIPSE_HOME" value="../../../../../usr/local/eclipse"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../opt/homebrew-cask/Caskroom/eclipse-modeling/4.5/Eclipse.app/Contents/Eclipse"/>
     <property name="ECLIPSE_WORKSPACE" value="../../../eclipse-workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->

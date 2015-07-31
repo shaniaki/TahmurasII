@@ -30,6 +30,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/domain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DecisionVariable/value"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//ClockConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//ClockConstraint/logicalclock"/>
@@ -63,10 +64,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BinaryRelation/component"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BinaryRelation/domain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BinaryRelation/codomain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BinaryRelation/name"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//BindingModel">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BindingModel/binaryrelation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BindingModel/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BindingModel/constraint"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//DSEModel">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//DSEModel/bindingmodel"/>
