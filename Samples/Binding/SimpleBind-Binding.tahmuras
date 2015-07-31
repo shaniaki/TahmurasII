@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tahmuras:BindingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:tahmuras="http://www.shaniaki.com/tahmuras" name="simplebind">
+  <binaryrelation domain="app_components_type" codomain="plat_inst_components_type"/>
+</tahmuras:BindingModel>

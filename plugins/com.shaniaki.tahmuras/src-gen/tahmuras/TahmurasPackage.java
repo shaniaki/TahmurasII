@@ -854,13 +854,31 @@ public interface TahmurasPackage extends EPackage {
 	int BINARY_RELATION__COMPONENT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_RELATION__DOMAIN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Codomain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_RELATION__CODOMAIN = 2;
+
+	/**
 	 * The number of structural features of the '<em>Binary Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINARY_RELATION_FEATURE_COUNT = 1;
+	int BINARY_RELATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Binary Relation</em>' class.
@@ -891,13 +909,22 @@ public interface TahmurasPackage extends EPackage {
 	int BINDING_MODEL__BINARYRELATION = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_MODEL__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Binding Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_MODEL_FEATURE_COUNT = 1;
+	int BINDING_MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Binding Model</em>' class.
@@ -1424,6 +1451,28 @@ public interface TahmurasPackage extends EPackage {
 	EReference getBinaryRelation_Component();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.BinaryRelation#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain</em>'.
+	 * @see tahmuras.BinaryRelation#getDomain()
+	 * @see #getBinaryRelation()
+	 * @generated
+	 */
+	EAttribute getBinaryRelation_Domain();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.BinaryRelation#getCodomain <em>Codomain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Codomain</em>'.
+	 * @see tahmuras.BinaryRelation#getCodomain()
+	 * @see #getBinaryRelation()
+	 * @generated
+	 */
+	EAttribute getBinaryRelation_Codomain();
+
+	/**
 	 * Returns the meta object for class '{@link tahmuras.BindingModel <em>Binding Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1443,6 +1492,17 @@ public interface TahmurasPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBindingModel_Binaryrelation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.BindingModel#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.BindingModel#getName()
+	 * @see #getBindingModel()
+	 * @generated
+	 */
+	EAttribute getBindingModel_Name();
 
 	/**
 	 * Returns the meta object for class '{@link tahmuras.DSEModel <em>DSE Model</em>}'.
@@ -1883,6 +1943,22 @@ public interface TahmurasPackage extends EPackage {
 		EReference BINARY_RELATION__COMPONENT = eINSTANCE.getBinaryRelation_Component();
 
 		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINARY_RELATION__DOMAIN = eINSTANCE.getBinaryRelation_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Codomain</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINARY_RELATION__CODOMAIN = eINSTANCE.getBinaryRelation_Codomain();
+
+		/**
 		 * The meta object literal for the '{@link tahmuras.impl.BindingModelImpl <em>Binding Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1899,6 +1975,14 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINDING_MODEL__BINARYRELATION = eINSTANCE.getBindingModel_Binaryrelation();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINDING_MODEL__NAME = eINSTANCE.getBindingModel_Name();
 
 		/**
 		 * The meta object literal for the '{@link tahmuras.impl.DSEModelImpl <em>DSE Model</em>}' class.

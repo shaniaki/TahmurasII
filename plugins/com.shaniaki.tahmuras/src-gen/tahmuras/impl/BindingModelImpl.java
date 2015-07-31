@@ -24,6 +24,7 @@ import tahmuras.TahmurasPackage;
  * </p>
  * <ul>
  *   <li>{@link tahmuras.impl.BindingModelImpl#getBinaryrelation <em>Binaryrelation</em>}</li>
+ *   <li>{@link tahmuras.impl.BindingModelImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,6 +39,25 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 	 * @ordered
 	 */
 	protected BinaryRelation binaryrelation;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,6 +126,27 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TahmurasPackage.BINDING_MODEL__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -125,6 +166,8 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 		switch (featureID) {
 			case TahmurasPackage.BINDING_MODEL__BINARYRELATION:
 				return getBinaryrelation();
+			case TahmurasPackage.BINDING_MODEL__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -139,6 +182,9 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 		switch (featureID) {
 			case TahmurasPackage.BINDING_MODEL__BINARYRELATION:
 				setBinaryrelation((BinaryRelation)newValue);
+				return;
+			case TahmurasPackage.BINDING_MODEL__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -155,6 +201,9 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 			case TahmurasPackage.BINDING_MODEL__BINARYRELATION:
 				setBinaryrelation((BinaryRelation)null);
 				return;
+			case TahmurasPackage.BINDING_MODEL__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -169,8 +218,26 @@ public class BindingModelImpl extends MinimalEObjectImpl.Container implements Bi
 		switch (featureID) {
 			case TahmurasPackage.BINDING_MODEL__BINARYRELATION:
 				return binaryrelation != null;
+			case TahmurasPackage.BINDING_MODEL__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //BindingModelImpl

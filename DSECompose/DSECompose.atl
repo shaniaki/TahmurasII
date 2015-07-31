@@ -1,0 +1,158 @@
+-- @nsURI tahmuras=http://www.shaniaki.com/tahmuras
+
+module DSECompose;
+create DSEOUT : tahmuras from APPIN : tahmuras, PLATIN : tahmuras, BINDIN : tahmuras;
+
+-- Create the top-level DSE Model
+rule DSEModel {
+	from
+		sa : tahmuras!ApplicationModel, sp : tahmuras!PlatformModel, sb : tahmuras!BindingModel
+	to 
+		tdse : tahmuras!DSEModel (
+			applicationmodel <- sa,
+			platformmodel <- sp,
+			bindingmodel <- sb
+		)
+}
+
+-- Copy generic elements
+rule BinRel {
+	from
+		sb : tahmuras!BinaryRelation
+	to 
+		tb : tahmuras!BinaryRelation (
+			codomain <- sb.codomain,
+			component <- sb.component,
+			domain <- sb.domain
+		)
+}
+
+-- Copy the Application model
+rule AppModel {
+	from
+		sa : tahmuras!ApplicationModel
+	to 
+		ta : tahmuras!ApplicationModel (
+			applicationcomponent <- sa.applicationcomponent,
+			binaryrelation <- sa.binaryrelation,
+			constraint <- sa.constraint,
+			name <- sa.name,
+			performancemetric <- sa.performancemetric
+		)
+}
+
+rule AppComp {
+	from
+		sa : tahmuras!ApplicationComponent
+	to 
+		ta : tahmuras!ApplicationComponent (
+			constraint <- sa.constraint,
+			decisionvariable <- sa.decisionvariable,
+			logicalclock <- sa.logicalclock,
+			name <- sa.name,
+			performancemetric <- sa.performancemetric
+		)
+}
+
+rule ClkCons {
+	from
+		sc : tahmuras!ClockConstraint
+	to 
+		tc : tahmuras!ClockConstraint (
+			decisionvariable <- sc.decisionvariable,
+			logicalclock <- sc.logicalclock,
+			minizincConstraint <- sc.minizincConstraint,
+			name <- sc.name
+		)
+}
+
+rule PerfMet {
+	from
+		sp : tahmuras!PerformanceMetric
+	to 
+		tp : tahmuras!PerformanceMetric (
+			domain <- sp.domain,
+			minizincConstraint <- sp.minizincConstraint,
+			name <- sp.name
+		)
+}
+
+rule LogClk {
+	from
+		sl : tahmuras!LogicalClock
+	to 
+		tl : tahmuras!LogicalClock (
+			name <- sl.name
+		)
+}
+
+-- Copy the Platform model
+rule PlatModel {
+	from
+		sp : tahmuras!PlatformModel
+	to 
+		tp : tahmuras!PlatformModel (
+			binaryrelation <- sp.binaryrelation,
+			constraint <- sp.constraint,
+			costmetric <- sp.costmetric,
+			name <- sp.name,
+			platformcomponent <- sp.platformcomponent
+		)
+}
+
+rule PlatComp {
+	from
+		sp : tahmuras!PlatformComponent
+	to 
+		tp : tahmuras!PlatformComponent (
+			constraint <- sp.constraint,
+			costmetric <- sp.costmetric,
+			decisionvariable <- sp.decisionvariable,
+			logicalclock <- sp.logicalclock,
+			name <- sp.name
+		)
+}
+
+rule InstCons {
+	from
+		si : tahmuras!InstantiationConstraint
+	to 
+		ti : tahmuras!InstantiationConstraint (
+			decisionvariable <- si.decisionvariable,
+			minizincConstraint <- si.minizincConstraint,
+			name <- si.name
+		)
+}
+
+rule CostMet {
+	from
+		sc : tahmuras!CostMetric
+	to 
+		tc : tahmuras!CostMetric (
+			domain <- sc.domain,
+			minizincConstraint <- sc.minizincConstraint,
+			name <- sc.name
+		)
+}
+
+rule DecVar {
+	from
+		sd : tahmuras!DecisionVariable
+	to 
+		td : tahmuras!DecisionVariable (
+			domain <- sd.domain,
+			name <- sd.name,
+			size <- sd.size
+		)
+}
+
+-- Copy the Binding model
+rule BindingModel {
+	from
+		sb : tahmuras!BindingModel
+	to 
+		tb : tahmuras!BindingModel (
+			binaryrelation <- sb.binaryrelation,
+			name <- sb.name
+		)
+}

@@ -61,9 +61,12 @@
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//BinaryRelation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BinaryRelation/component"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BinaryRelation/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BinaryRelation/codomain"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//BindingModel">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//BindingModel/binaryrelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//BindingModel/name"/>
     </genClasses>
     <genClasses ecoreClass="tahmuras.ecore#//DSEModel">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//DSEModel/bindingmodel"/>

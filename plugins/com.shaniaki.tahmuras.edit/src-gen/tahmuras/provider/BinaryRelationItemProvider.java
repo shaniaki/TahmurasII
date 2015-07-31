@@ -18,8 +18,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import tahmuras.BinaryRelation;
 import tahmuras.TahmurasPackage;
 
 /**
@@ -58,6 +61,8 @@ public class BinaryRelationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addComponentPropertyDescriptor(object);
+			addDomainPropertyDescriptor(object);
+			addCodomainPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,6 +90,50 @@ public class BinaryRelationItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Domain feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BinaryRelation_domain_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BinaryRelation_domain_feature", "_UI_BinaryRelation_type"),
+				 TahmurasPackage.Literals.BINARY_RELATION__DOMAIN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Codomain feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCodomainPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BinaryRelation_codomain_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BinaryRelation_codomain_feature", "_UI_BinaryRelation_type"),
+				 TahmurasPackage.Literals.BINARY_RELATION__CODOMAIN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns BinaryRelation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +152,10 @@ public class BinaryRelationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_BinaryRelation_type");
+		String label = ((BinaryRelation)object).getDomain();
+		return label == null || label.length() == 0 ?
+			getString("_UI_BinaryRelation_type") :
+			getString("_UI_BinaryRelation_type") + " " + label;
 	}
 	
 
@@ -117,6 +169,13 @@ public class BinaryRelationItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(BinaryRelation.class)) {
+			case TahmurasPackage.BINARY_RELATION__DOMAIN:
+			case TahmurasPackage.BINARY_RELATION__CODOMAIN:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

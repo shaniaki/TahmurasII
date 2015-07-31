@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link tahmuras.BinaryRelation#getComponent <em>Component</em>}</li>
+ *   <li>{@link tahmuras.BinaryRelation#getDomain <em>Domain</em>}</li>
+ *   <li>{@link tahmuras.BinaryRelation#getCodomain <em>Codomain</em>}</li>
  * </ul>
  *
  * @see tahmuras.TahmurasPackage#getBinaryRelation()
@@ -38,5 +40,57 @@ public interface BinaryRelation extends EObject {
 	 * @generated
 	 */
 	EList<Component> getComponent();
+
+	/**
+	 * Returns the value of the '<em><b>Domain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Domain</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Domain</em>' attribute.
+	 * @see #setDomain(String)
+	 * @see tahmuras.TahmurasPackage#getBinaryRelation_Domain()
+	 * @model
+	 * @generated
+	 */
+	String getDomain();
+
+	/**
+	 * Sets the value of the '{@link tahmuras.BinaryRelation#getDomain <em>Domain</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Domain</em>' attribute.
+	 * @see #getDomain()
+	 * @generated
+	 */
+	void setDomain(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Codomain</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Codomain</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Codomain</em>' attribute.
+	 * @see #setCodomain(String)
+	 * @see tahmuras.TahmurasPackage#getBinaryRelation_Codomain()
+	 * @model
+	 * @generated
+	 */
+	String getCodomain();
+
+	/**
+	 * Sets the value of the '{@link tahmuras.BinaryRelation#getCodomain <em>Codomain</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Codomain</em>' attribute.
+	 * @see #getCodomain()
+	 * @generated
+	 */
+	void setCodomain(String value);
 
 } // BinaryRelation
