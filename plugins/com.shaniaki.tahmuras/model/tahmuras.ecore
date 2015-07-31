@@ -88,5 +88,6 @@
         eType="#//PlatformModel" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="applicationmodel" lowerBound="1"
         eType="#//ApplicationModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

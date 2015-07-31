@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generatePlat('http://www.shaniaki.com/tahmuras')]
+
+
+[template public generatePlat(aPlatModel : PlatformModel)]
+% The platform problem
+int: num_max_plat_insts;
+set of int: plat_inst_components_type=1..[aPlatModel.platformcomponent->size()/]*num_max_plat_insts;
+[/template]

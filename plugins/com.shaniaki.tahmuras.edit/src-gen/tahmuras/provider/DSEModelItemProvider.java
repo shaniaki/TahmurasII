@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -65,6 +66,7 @@ public class DSEModelItemProvider
 			addBindingmodelPropertyDescriptor(object);
 			addPlatformmodelPropertyDescriptor(object);
 			addApplicationmodelPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -136,6 +138,28 @@ public class DSEModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DSEModel_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DSEModel_name_feature", "_UI_DSEModel_type"),
+				 TahmurasPackage.Literals.DSE_MODEL__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -186,7 +210,10 @@ public class DSEModelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DSEModel_type");
+		String label = ((DSEModel)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DSEModel_type") :
+			getString("_UI_DSEModel_type") + " " + label;
 	}
 	
 
@@ -202,6 +229,9 @@ public class DSEModelItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DSEModel.class)) {
+			case TahmurasPackage.DSE_MODEL__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case TahmurasPackage.DSE_MODEL__BINDINGMODEL:
 			case TahmurasPackage.DSE_MODEL__PLATFORMMODEL:
 			case TahmurasPackage.DSE_MODEL__APPLICATIONMODEL:

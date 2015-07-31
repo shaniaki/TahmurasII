@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module generateBind('http://www.shaniaki.com/tahmuras')]
+
+
+[template public generateBind(aBindingModel : BindingModel)]
+
+[/template]

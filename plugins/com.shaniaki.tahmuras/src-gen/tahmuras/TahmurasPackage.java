@@ -973,13 +973,22 @@ public interface TahmurasPackage extends EPackage {
 	int DSE_MODEL__APPLICATIONMODEL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSE_MODEL__NAME = 3;
+
+	/**
 	 * The number of structural features of the '<em>DSE Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DSE_MODEL_FEATURE_COUNT = 3;
+	int DSE_MODEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>DSE Model</em>' class.
@@ -1548,6 +1557,17 @@ public interface TahmurasPackage extends EPackage {
 	EReference getDSEModel_Applicationmodel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tahmuras.DSEModel#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see tahmuras.DSEModel#getName()
+	 * @see #getDSEModel()
+	 * @generated
+	 */
+	EAttribute getDSEModel_Name();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2017,6 +2037,14 @@ public interface TahmurasPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DSE_MODEL__APPLICATIONMODEL = eINSTANCE.getDSEModel_Applicationmodel();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DSE_MODEL__NAME = eINSTANCE.getDSEModel_Name();
 
 	}
 

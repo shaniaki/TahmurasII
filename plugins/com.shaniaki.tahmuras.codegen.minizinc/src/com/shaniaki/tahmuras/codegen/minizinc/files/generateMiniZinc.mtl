@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[module generateMiniZinc('http://www.shaniaki.com/tahmuras')]
+[import com::shaniaki::tahmuras::codegen::minizinc::common::generateApp /]
+[import com::shaniaki::tahmuras::codegen::minizinc::common::generatePlat /]
+[import com::shaniaki::tahmuras::codegen::minizinc::common::generateBind /]
+
+[template public generateDSE(aDSEModel : DSEModel)]
+
+[file (aDSEModel.name + '.mzn', false, 'UTF-8')]
+% include the headers
+include "lib/tahmuras.mzn";
+
+% global parameters
+int: max_steps;
+
+[generateApp(aDSEModel.applicationmodel)/]
+[generatePlat(aDSEModel.platformmodel)/]
+[generateBind(aDSEModel.bindingmodel)/]
+
+[/file]
+[/template]

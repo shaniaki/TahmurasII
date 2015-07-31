@@ -72,6 +72,7 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//DSEModel/bindingmodel"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//DSEModel/platformmodel"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference tahmuras.ecore#//DSEModel/applicationmodel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tahmuras.ecore#//DSEModel/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -9,6 +9,7 @@ rule DSEModel {
 		sa : tahmuras!ApplicationModel, sp : tahmuras!PlatformModel, sb : tahmuras!BindingModel
 	to 
 		tdse : tahmuras!DSEModel (
+			name <- sa.name + '-' + sp.name + '-' + sb.name,
 			applicationmodel <- sa,
 			platformmodel <- sp,
 			bindingmodel <- sb

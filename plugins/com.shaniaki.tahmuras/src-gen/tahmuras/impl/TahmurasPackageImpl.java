@@ -681,6 +681,15 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDSEModel_Name() {
+		return (EAttribute)dseModelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TahmurasFactory getTahmurasFactory() {
 		return (TahmurasFactory)getEFactoryInstance();
 	}
@@ -771,6 +780,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		createEReference(dseModelEClass, DSE_MODEL__BINDINGMODEL);
 		createEReference(dseModelEClass, DSE_MODEL__PLATFORMMODEL);
 		createEReference(dseModelEClass, DSE_MODEL__APPLICATIONMODEL);
+		createEAttribute(dseModelEClass, DSE_MODEL__NAME);
 	}
 
 	/**
@@ -876,6 +886,7 @@ public class TahmurasPackageImpl extends EPackageImpl implements TahmurasPackage
 		initEReference(getDSEModel_Bindingmodel(), this.getBindingModel(), null, "bindingmodel", null, 1, 1, DSEModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDSEModel_Platformmodel(), this.getPlatformModel(), null, "platformmodel", null, 1, 1, DSEModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDSEModel_Applicationmodel(), this.getApplicationModel(), null, "applicationmodel", null, 1, 1, DSEModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDSEModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, DSEModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

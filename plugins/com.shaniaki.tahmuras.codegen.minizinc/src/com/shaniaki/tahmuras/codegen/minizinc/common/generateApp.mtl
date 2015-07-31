@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generateApp('http://www.shaniaki.com/tahmuras')]
+
+
+[template public generateApp(anAppModel : ApplicationModel)]
+% The application problem
+set of int: app_components_type=1..[anAppModel.applicationcomponent->size()/];
+
+
+[/template]
