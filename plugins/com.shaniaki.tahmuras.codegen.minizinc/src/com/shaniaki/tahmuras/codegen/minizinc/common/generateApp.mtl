@@ -33,7 +33,7 @@ array ['['/]1..[comp_var.size/][']'/] of var [comp_var.domain/]: [comp.name/]_[c
 % Define the application component clocks
 [for (comp : ApplicationComponent | anAppModel.applicationcomponent)]
 	[for (comp_clk : LogicalClock | comp.logicalclock)]
-array ['['/]steps_range[']'/] of var ibool: [comp.name/]_[comp_clk.name/]_clk;
+array ['['/]steps_range[']'/] of var bool: [comp.name/]_[comp_clk.name/]_clk;
 	[/for]
 [/for]
 [/template]

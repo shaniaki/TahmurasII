@@ -46,7 +46,7 @@ array ['['/]1..num_max_plat_insts,1..[comp_var.size/][']'/] of var [comp_var.dom
 % Define the platform component clocks
 [for (comp : PlatformComponent | aPlatModel.platformcomponent)]
 	[for (comp_clk : LogicalClock | comp.logicalclock)]
-array ['['/]1..num_max_plat_insts,steps_range[']'/] of var ibool: [comp.name/]_[comp_clk.name/]_clks;
+array ['['/]1..num_max_plat_insts,steps_range[']'/] of var bool: [comp.name/]_[comp_clk.name/]_clks;
 	[/for]
 [/for]
 [/template]
@@ -55,7 +55,7 @@ array ['['/]1..num_max_plat_insts,steps_range[']'/] of var ibool: [comp.name/]_[
 % Post the platform component instantiation constraints
 [for (comp : PlatformComponent | aPlatModel.platformcomponent)]
 	[for (cons : InstantiationConstraint | comp.constraint->filter(InstantiationConstraint))]
-constraint forall (i in 1..num_max_plat_insts) (let [genComponentVariableList(comp)/] in [cons.minizincConstraint/]);
+constraint forall (i in 1..num_max_plat_insts) (let {[genComponentVariableList(comp)/]} in [cons.minizincConstraint/]);
 	[/for]
 [/for]
 [/template]
@@ -64,7 +64,7 @@ constraint forall (i in 1..num_max_plat_insts) (let [genComponentVariableList(co
 % Post the platform component clock constraints
 [for (comp : PlatformComponent | aPlatModel.platformcomponent)]
 	[for (cons : ClockConstraint | comp.constraint->filter(ClockConstraint))]
-constraint forall (i in 1..num_max_plat_insts) (let [genComponentVariableList(comp)/] in [cons.minizincConstraint/]);
+constraint forall (i in 1..num_max_plat_insts) (let {[genComponentVariableList(comp)/]} in [cons.minizincConstraint/]);
 	[/for]
 [/for]
 [/template]
@@ -79,7 +79,7 @@ array ['['/]1..[comp_variable.size/][']'/] of var [comp_variable.domain/]: [comp
 [for (comp : PlatformComponent | aPlatModel.platformcomponent)]
 	[for (metric : CostMetric | comp.costmetric)]
 array ['['/]1..num_max_plat_insts[']'/] of var [metric.domain/]: [comp.name/]_[metric.name/]_metrics;
-constraint forall (i in 1..num_max_plat_insts) (let [genComponentVariableList(comp)/][genMetricList(comp)/] in [metric.minizincConstraint/]);
+constraint forall (i in 1..num_max_plat_insts) (let {[genComponentVariableList(comp)/][genMetricList(comp)/]} in [metric.minizincConstraint/]);
 	[/for]
 [/for]
 [/template]

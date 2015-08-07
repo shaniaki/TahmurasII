@@ -3,19 +3,27 @@
 [import com::shaniaki::tahmuras::codegen::minizinc::common::generateApp /]
 [import com::shaniaki::tahmuras::codegen::minizinc::common::generatePlat /]
 [import com::shaniaki::tahmuras::codegen::minizinc::common::generateBind /]
+[import com::shaniaki::tahmuras::codegen::minizinc::common::generateSolve /]
+[import com::shaniaki::tahmuras::codegen::minizinc::common::generateOut /]
 
 [template public generateDSE(aDSEModel : DSEModel)]
 
 [file (aDSEModel.name + '.mzn', false, 'UTF-8')]
 % include the headers
-include "lib/tahmuras.mzn";
+include "../../../lib/tahmuras.mzn";
 
 % global parameters
 int: max_steps;
 
 [generateApp(aDSEModel.applicationmodel)/]
+
 [generatePlat(aDSEModel.platformmodel)/]
+
 [generateBind(aDSEModel.bindingmodel)/]
+
+[generateSolve(aDSEModel)/]
+
+[generateOutput(aDSEModel)/]
 
 [/file]
 [/template]
