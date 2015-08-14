@@ -327,62 +327,61 @@ predicate DelayFor(array[steps_range] of var set of clk_range: run,
         ))
 ;
 
-% %% Packet first (a special case of filteredBy) (tested)
-% function array[steps_range] of var bool: PacketFirst(
-%         array[steps_range] of var bool: c1,
-%         var int: period
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf = clk_conf(c);
-%         array[steps_range] of var int: c1_conf = clk_conf(c1);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = (c1_conf[i]+period-1) div period
-%             % The following does not work when c1_conf[i]=0 :
-%             % c_conf[i] = (c1_conf[i]-1) div period + 1
-%         );
-%     } in c
-% ;
+%% Packet first (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+predicate PacketFirst(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: period
+    ) = let {
+        array[steps_range] of var int: c_conf = clk_conf(run,c);
+        array[steps_range] of var int: c1_conf = clk_conf(run,c1);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = (c1_conf[i]+period-1) div period
+            % The following does not work when c1_conf[i]=0 :
+            % c_conf[i] = (c1_conf[i]-1) div period + 1
+        )
+;
 
-% %% byLast (a special case of filteredBy)
-% function array[steps_range] of var bool: PacketLast(
-%         array[steps_range] of var bool: c1,
-%         var int: period
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf = clk_conf(c);
-%         array[steps_range] of var int: c1_conf = clk_conf(c1);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = (c1_conf[i]) div period
-%         );
-%     } in c
-% ;
+%% byLast (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+predicate PacketLast(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: period
+    ) = let {
+        array[steps_range] of var int: c_conf = clk_conf(run,c);
+        array[steps_range] of var int: c1_conf = clk_conf(run,c1);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = (c1_conf[i]) div period
+        )
+;
 
-% %% isPeriodicOn (a special case of filteredBy)
-% function array[steps_range] of var bool: Periodic(
-%         array[steps_range] of var bool: c1,
-%         var int: period,
-%         var int: offset
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf = clk_conf(c);
-%         array[steps_range] of var int: c1_conf = clk_conf(c1);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = max(c1_conf[i]+period-1-offset,0) div period
-%         );
-%     } in c
-% ;
+%% isPeriodicOn (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+predicate Periodic(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: period,
+        var int: offset
+    ) = let {
+        array[steps_range] of var int: c_conf = clk_conf(run,c);
+        array[steps_range] of var int: c1_conf = clk_conf(run,c1);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = max(c1_conf[i]+period-1-offset,0) div period
+        )
+;
 
 % % filteredBy (tested)
-% function array[steps_range] of var bool: FilterBy(
-%     array[steps_range] of var bool: c1,
-%     array[int] of var bool: transient,
-%     array[int] of var bool: periodic
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
+% predicate FilterBy(array[steps_range] of var set of clk_range: run,
+%         clk_range: c1,
+%         array[int] of var bool: transient,
+%         array[int] of var bool: periodic
+%     ) = let {
 %         array[steps_range] of var int: c_conf;
 %         array[steps_range] of var int: c1_conf;
-%         constraint c_conf = clk_conf(c);
-%         constraint c1_conf = clk_conf(c1);
+%         constraint c_conf = clk_conf(run,c);
+%         constraint c1_conf = clk_conf(run,c1);
 %         int: tran_len = length(transient);
 %         int: peri_len = length(periodic);
 %         % first construct the filtering sequence
@@ -395,11 +394,11 @@ predicate DelayFor(array[steps_range] of var set of clk_range: run,
 %             if i<=tran_len then seq[i]=transient[i] else
 %             seq[i]=periodic[(i-tran_len-1) mod peri_len + 1] endif
 %         );
+%     } in
 %         % then use its configuration as a look up table by means of the clock configuration
 %         % or: how many ticks (1's in seq) the clock should have made until now?
-%         constraint forall (i in steps_range) (
+%         forall (i in steps_range) (
 %             c_conf[i] = seq_conf[c1_conf[i]]
-%         );
-%     } in c
+%         )
 % ;
 
