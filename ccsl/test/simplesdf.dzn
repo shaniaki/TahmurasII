@@ -1,0 +1,14 @@
+max_steps = 12;
+
+search_ann = seq_search (
+    [int_search([actor1_start_clk[s],actor1_end_clk[s],actor2_start_clk[s],actor2_end_clk[s],actor3_start_clk[s],actor3_end_clk[s],
+                arc1_read_clk[s],arc1_write_clk[s],arc2_read_clk[s],arc2_write_clk[s],arc3_read_clk[s],arc3_write_clk[s]], input_order, indomain_max, complete)
+            |  s in steps_range]
+);
+
+app_graph_rel = [|0,0,0,0,0,0, |
+                  0,0,0,0,0,0, |
+                  0,0,0,0,0,0, |
+                  0,0,0,0,0,0, |
+                  0,0,0,0,0,0, |
+                  0,0,0,0,0,0  |];
