@@ -4,18 +4,19 @@
 %% int: num_clks as the number of clocks present in the system
 
 % Helper predicates
-%% Returns a clock configuration, i.e., number of instants so far until each step (tested)
-% function array [steps_range] of var int: clk_conf(
-%         array [steps_range] of var bool: c
-%     ) :: promise_total = let {
-%         array [steps_range] of var int: c_conf;
-%         constraint c_conf[1] = c[1]; % FIXME: does this makes it partial?
-%         constraint forall (i in 2..max_steps) (
-%             (c_conf[i] = c_conf[i-1] + c[i]) %/\
-% %             (c[i] = (c_conf[i] != c_conf[i-1]))            
-%         )
-%     } in c_conf
-% ;
+% Returns a clock configuration, i.e., number of instants so far until each step (tested)
+function array [steps_range] of var int: clk_conf(
+        array [steps_range] of var set of clk_range: run,
+        clk_range: c
+    ) = let {
+        array [steps_range] of var int: c_conf;
+        constraint c_conf[1] = bool2int(c in run[1]);
+        constraint forall (i in 2..max_steps) (
+            (c_conf[i] = c_conf[i-1] + bool2int(c in run[i]))
+        )
+    } in c_conf
+;
+
 predicate extract_clk(array[steps_range] of var set of clk_range: run,
         clk_range: c_idx,
         array[steps_range] of var bool: c
@@ -146,88 +147,88 @@ predicate Intersection(array[steps_range] of var set of clk_range: run,
         )
 ;
 
-% %% Infimum (tested)
-% function array[steps_range] of var bool: Inf(
-%         array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf;
-%         array[steps_range] of var int: c1_conf;
-%         array[steps_range] of var int: c2_conf;
-%         constraint c_conf = clk_conf(c);
-%         constraint c1_conf = clk_conf(c1);
-%         constraint c2_conf = clk_conf(c2);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = max(c1_conf[i],c2_conf[i])
-%         );
-%     } in c
-% ;
+%% Infimum (tested)
+predicate Inf(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        clk_range: c2
+    ) = let {
+        array[steps_range] of var int: c_conf;
+        array[steps_range] of var int: c1_conf;
+        array[steps_range] of var int: c2_conf;
+        constraint c_conf = clk_conf(run,c);
+        constraint c1_conf = clk_conf(run,c1);
+        constraint c2_conf = clk_conf(run,c2);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = max(c1_conf[i],c2_conf[i])
+        )
+;
 
-% %% Supremum (tested)
-% function array[steps_range] of var bool: Sup(
-%         array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf;
-%         array[steps_range] of var int: c1_conf;
-%         array[steps_range] of var int: c2_conf;
-%         constraint c_conf = clk_conf(c);
-%         constraint c1_conf = clk_conf(c1);
-%         constraint c2_conf = clk_conf(c2);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = min(c1_conf[i],c2_conf[i])
-%         );
-%     } in c
-% ;
+%% Supremum (tested)
+predicate Sup(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        clk_range: c2
+    ) = let {
+        array[steps_range] of var int: c_conf;
+        array[steps_range] of var int: c1_conf;
+        array[steps_range] of var int: c2_conf;
+        constraint c_conf = clk_conf(run,c);
+        constraint c1_conf = clk_conf(run,c1);
+        constraint c2_conf = clk_conf(run,c2);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = min(c1_conf[i],c2_conf[i])
+        )
+;
 
-% %% Sampling (c = c1 sampledOn c2)(tested)
-% function array[steps_range] of var bool: NonStrictSampledOn(
-%         array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[0..max_steps] of var bool: c1_seen;
-%         constraint c1_seen[0]=false;
-%         constraint forall (i in steps_range) (
-%             (c1_seen[i] = ((c1[i] \/ c1_seen[i-1]) /\ not c[i])) /\
-%             (c[i] = (c2[i] /\ (c1_seen[i-1] \/ c1[i])))
-%         );
-%     } in c
-% ;
+%% Sampling (c = c1 sampledOn c2)(tested)
+predicate NonStrictSampledOn(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        clk_range: c2
+    ) = let {
+        array[0..max_steps] of var bool: c1_seen;
+        constraint c1_seen[0]=false;
+    } in
+        forall (i in steps_range) (
+            (c1_seen[i] = (((c1 in run[i]) \/ c1_seen[i-1]) /\ not (c in run[i]))) /\
+            (c in run[i] = ((c2 in run[i]) /\ (c1_seen[i-1] \/ (c1 in run[i]))))
+        )
+;
 
-% %% Strict sampling (c = c1 strictlySampledOn c2)(tested)
-% function array[steps_range] of var bool: SampledOn(
-%         array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[0..max_steps] of var bool: c1_seen;
-%         constraint c1_seen[0]=false;
-%         constraint forall (i in steps_range) (
-%             (c1_seen[i] = ((c1[i] \/ c1_seen[i-1]) /\ not c[i])) /\
-%             (c[i] = (c2[i] /\ c1_seen[i-1]))
-%         );
-%     } in c
-% ;
+%% Strict sampling (c = c1 strictlySampledOn c2)(tested)
+predicate SampledOn(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        clk_range: c2
+    ) = let {
+        array[0..max_steps] of var bool: c1_seen;
+        constraint c1_seen[0]=false;
+    } in
+        forall (i in steps_range) (
+            (c1_seen[i] = (((c1 in run[i]) \/ c1_seen[i-1]) /\ not (c in run[i]))) /\
+            (c in run[i] = ((c2 in run[i]) /\ c1_seen[i-1]))
+        )
+;
 
 % %% Await (tested)
 
-% function array[steps_range] of var bool: Wait(
-%         array[steps_range] of var bool: c1,
-%         var int: n
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf;
-%         array[steps_range] of var int: c1_conf;
-%         constraint c_conf = clk_conf(c);
-%         constraint c1_conf = clk_conf(c1);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = min(c1_conf[i],n)
-%         );
-%     } in c
-% ;
+predicate Wait(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: n
+    ) = let {
+        array[steps_range] of var int: c_conf;
+        array[steps_range] of var int: c1_conf;
+        constraint c_conf = clk_conf(run,c);
+        constraint c1_conf = clk_conf(run,c1);
+    } in 
+        forall (i in steps_range) (
+            c_conf[i] = min(c1_conf[i],n)
+        )
+;
 
 % % %% Defering (c1 defered for <ns>) while ns has indices 1.. and domain 0.. (tested)
 % % predicate defered(array[steps_range] of var bool: c,
@@ -260,68 +261,71 @@ predicate Intersection(array[steps_range] of var set of clk_range: run,
 % %     )
 % % ;
 
-% %% Upto (tested)
-% function array[steps_range] of var bool: UpTo(
-%         array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c2_conf;
-%         constraint c2_conf = clk_conf(c2);
-%         constraint forall (i in steps_range) (
-%             c[i] = (c2_conf[i]=0)/\c1[i]
-%         );
-%     } in c
-% ;
+%% Upto (tested)
+predicate UpTo(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        clk_range: c2
+    ) = let {
+        array[steps_range] of var int: c2_conf;
+        constraint c2_conf = clk_conf(run,c2);
+    } in
+        forall (i in steps_range) (
+            (c in run[i]) <-> (c2_conf[i]=0) /\ (c1 in run[i])
+        )
+;
 
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %% Delay (a special case of filteredBy) (tested) FIXME: is this total?
-% function array[steps_range] of var bool: Delay(
-%         array[steps_range] of var bool: c1,
-%         var int: d
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         array[steps_range] of var int: c_conf;
-%         array[steps_range] of var int: c1_conf;
-%         constraint c_conf = clk_conf(c);
-%         constraint c1_conf = clk_conf(c1);
-%         constraint forall (i in steps_range) (
-%             c_conf[i] = max(c1_conf[i]-d,0)
-%         );
-%     } in c
-% ;
+%% Delay (a special case of filteredBy) (tested) FIXME: is this total?
+predicate Delay(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: d
+    ) = let {
+        array[steps_range] of var int: c_conf;
+        array[steps_range] of var int: c1_conf;
+        constraint c_conf = clk_conf(run,c);
+        constraint c1_conf = clk_conf(run,c1);
+    } in
+        forall (i in steps_range) (
+            c_conf[i] = max(c1_conf[i]-d,0)
+        )
+;
 
-% %% Bounded precedence (tested)
-% predicate BoundedPrecedes(array[steps_range] of var bool: c1,
-%         array[steps_range] of var bool: c2,
-%         var int: d
-%     ) =
-%     Precedes(c1,c2) /\ Precedes(c2,Delay(c1,d))
-% ;
+%% Bounded precedence (tested)
+predicate BoundedPrecedes(array[steps_range] of var set of clk_range: run,
+        clk_range: c1,
+        clk_range: c2,
+        clk_range: aux_clk,
+        var int: d
+    ) =
+    Delay(run,aux_clk,c1,d) /\
+    Precedes(run,c1,c2) /\ Precedes(run,c2,aux_clk)
+;
 
-% %% Delay On (a special case of filteredBy) (not efficient?) (d>0)
-% function array[steps_range] of var bool: DelayFor(
-%         array[steps_range] of var bool: c1,
-%         var int: d,
-%         array[steps_range] of var bool: base
-%     ) :: promise_total = let {
-%         array[steps_range] of var bool: c;
-%         % binary word encoded as an integer
-%         array[1..max_steps+1] of var 0..pow(2,max_steps)-1: bws;
-%         var int: d2 = pow2(d-1);
-%         constraint bws[1]=0;
-%         constraint forall (i in steps_range) (
-%             (c[i] = (bws[i] mod 2) * base[i]) /\
-% %             (not c1[i]/\not base[i] -> bws[i+1]=bws[i]           ) /\
-% %             (not c1[i]/\base[i]     -> bws[i+1]=bws[i] div 2     ) /\
-% %             (c1[i]    /\not base[i] -> bws[i+1]=bws[i] + d2      ) /\
-% %             (c1[i]    /\base[i]     -> bws[i+1]=bws[i] div 2 + d2)
-%             % The above 4 lines are encrypted as:
-%             (bws[i+1] = bws[i] div (1+base[i]) + c1[i]*d2)
-%         );
-%     } in c
-% ;
+%% Delay On (a special case of filteredBy) (not efficient?) (d>0)
+predicate DelayFor(array[steps_range] of var set of clk_range: run,
+        clk_range: c,
+        clk_range: c1,
+        var int: d,
+        clk_range: base
+    ) = let {
+        % binary word encoded as an integer
+        array[1..max_steps+1] of var 0..pow(2,max_steps)-1: bws;
+        var int: d2 = pow2(d-1);
+    } in
+        (bws[1]=0) /\
+        (forall (i in steps_range) (
+            ((c in run[i]) <-> (bws[i] mod 2 = 1) /\ (base in run[i])) /\
+%             (not c1[i]/\not base[i] -> bws[i+1]=bws[i]           ) /\
+%             (not c1[i]/\base[i]     -> bws[i+1]=bws[i] div 2     ) /\
+%             (c1[i]    /\not base[i] -> bws[i+1]=bws[i] + d2      ) /\
+%             (c1[i]    /\base[i]     -> bws[i+1]=bws[i] div 2 + d2)
+            % The above 4 lines are encrypted as:
+            (bws[i+1] = bws[i] div (1+bool2int(base in run[i])) + bool2int(c1 in run[i])*d2)
+        ))
+;
 
 % %% Packet first (a special case of filteredBy) (tested)
 % function array[steps_range] of var bool: PacketFirst(
