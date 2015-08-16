@@ -327,7 +327,7 @@ predicate DelayFor(array[steps_range] of var set of clk_range: run,
         ))
 ;
 
-%% Packet first (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+%% Packet first (a special case of filteredBy)
 predicate PacketFirst(array[steps_range] of var set of clk_range: run,
         clk_range: c,
         clk_range: c1,
@@ -343,7 +343,7 @@ predicate PacketFirst(array[steps_range] of var set of clk_range: run,
         )
 ;
 
-%% byLast (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+%% byLast (a special case of filteredBy)
 predicate PacketLast(array[steps_range] of var set of clk_range: run,
         clk_range: c,
         clk_range: c1,
@@ -357,7 +357,7 @@ predicate PacketLast(array[steps_range] of var set of clk_range: run,
         )
 ;
 
-%% isPeriodicOn (a special case of filteredBy) (FIXME: does not work if the clock doesn't tick at first step)
+%% isPeriodicOn (a special case of filteredBy)
 predicate Periodic(array[steps_range] of var set of clk_range: run,
         clk_range: c,
         clk_range: c1,

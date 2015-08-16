@@ -31,8 +31,8 @@ array [steps_range] of var set of clk_range: run;
 % constraint BoundedPrecedes(run,c,c2,aux_clk,2);
 % constraint FilterBy(run,c,c2,transient,periodic); array [1..3] of bool: transient = [true,false,false]; array [1..2] of bool: periodic = [true,false];
 % constraint PacketFirst(run,c,c2,2);
-constraint PacketLast(run,c,c1,2);
-% constraint Periodic(run,c,c1,2,1);
+% constraint PacketLast(run,c,c2,2);
+constraint Periodic(run,c,c2,2,1);
 % constraint DelayFor(run,c,c1,2,c2);
 
 % solve maximize c_conf[max_steps];
