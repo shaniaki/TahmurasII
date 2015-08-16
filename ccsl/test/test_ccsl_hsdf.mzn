@@ -1,6 +1,6 @@
-include "../lib2/ccsl-hsdf.mzn";
+include "../lib/ccsl-hsdf.mzn";
 
-int: max_steps = 10;
+int: max_steps = 100;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % An HSDFG (weights are all 1).
@@ -19,32 +19,32 @@ int: max_steps = 10;
 %                •
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-array[steps_range] of var ibool: a1_clk;
-array[steps_range] of var ibool: a2_clk;
-array[steps_range] of var ibool: a3_clk;
-array[steps_range] of var ibool: a4_clk;
-array[steps_range] of var ibool: a5_clk;
-array[steps_range] of var ibool: a6_clk;
+array[steps_range] of var bool: a1_clk;
+array[steps_range] of var bool: a2_clk;
+array[steps_range] of var bool: a3_clk;
+array[steps_range] of var bool: a4_clk;
+array[steps_range] of var bool: a5_clk;
+array[steps_range] of var bool: a6_clk;
 
-array[steps_range] of var ibool: c1_r_clk;
-array[steps_range] of var ibool: c2_r_clk;
-array[steps_range] of var ibool: c3_r_clk;
-array[steps_range] of var ibool: c4_r_clk;
-array[steps_range] of var ibool: c5_r_clk;
-array[steps_range] of var ibool: c6_r_clk;
-array[steps_range] of var ibool: c7_r_clk;
-array[steps_range] of var ibool: c8_r_clk;
-array[steps_range] of var ibool: c9_r_clk;
+array[steps_range] of var bool: c1_r_clk;
+array[steps_range] of var bool: c2_r_clk;
+array[steps_range] of var bool: c3_r_clk;
+array[steps_range] of var bool: c4_r_clk;
+array[steps_range] of var bool: c5_r_clk;
+array[steps_range] of var bool: c6_r_clk;
+array[steps_range] of var bool: c7_r_clk;
+array[steps_range] of var bool: c8_r_clk;
+array[steps_range] of var bool: c9_r_clk;
 
-array[steps_range] of var ibool: c1_w_clk;
-array[steps_range] of var ibool: c2_w_clk;
-array[steps_range] of var ibool: c3_w_clk;
-array[steps_range] of var ibool: c4_w_clk;
-array[steps_range] of var ibool: c5_w_clk;
-array[steps_range] of var ibool: c6_w_clk;
-array[steps_range] of var ibool: c7_w_clk;
-array[steps_range] of var ibool: c8_w_clk;
-array[steps_range] of var ibool: c9_w_clk;
+array[steps_range] of var bool: c1_w_clk;
+array[steps_range] of var bool: c2_w_clk;
+array[steps_range] of var bool: c3_w_clk;
+array[steps_range] of var bool: c4_w_clk;
+array[steps_range] of var bool: c5_w_clk;
+array[steps_range] of var bool: c6_w_clk;
+array[steps_range] of var bool: c7_w_clk;
+array[steps_range] of var bool: c8_w_clk;
+array[steps_range] of var bool: c9_w_clk;
 
 array [1..9] of var 1..10: c_size;
 
