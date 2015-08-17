@@ -1,4 +1,4 @@
-include "../lib2/ccsl-sdf.mzn";
+include "../lib/tahmuras.mzn";
 
 int: max_steps = 12;
 
@@ -22,26 +22,26 @@ int: max_steps = 12;
 %                 └────┘    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-array [steps_range] of var ibool: base_clk;
+array [steps_range] of var bool: base_clk;
 
-array [steps_range] of var ibool: a1_clk_start;
-array [steps_range] of var ibool: a1_clk_end;
-array [steps_range] of var ibool: a2_clk_start;
-array [steps_range] of var ibool: a2_clk_end;
-array [steps_range] of var ibool: a3_clk_start;
-array [steps_range] of var ibool: a3_clk_end;
+array [steps_range] of var bool: a1_clk_start;
+array [steps_range] of var bool: a1_clk_end;
+array [steps_range] of var bool: a2_clk_start;
+array [steps_range] of var bool: a2_clk_end;
+array [steps_range] of var bool: a3_clk_start;
+array [steps_range] of var bool: a3_clk_end;
 
-array [steps_range] of var ibool: a1_clk_mapped;
-array [steps_range] of var ibool: a2_clk_mapped;
-array [steps_range] of var ibool: a3_clk_mapped;
+array [steps_range] of var bool: a1_clk_mapped;
+array [steps_range] of var bool: a2_clk_mapped;
+array [steps_range] of var bool: a3_clk_mapped;
 
-array[steps_range] of var ibool: c1_r_clk;
-array[steps_range] of var ibool: c2_r_clk;
-array[steps_range] of var ibool: c3_r_clk;
+array[steps_range] of var bool: c1_r_clk;
+array[steps_range] of var bool: c2_r_clk;
+array[steps_range] of var bool: c3_r_clk;
 
-array[steps_range] of var ibool: c1_w_clk;
-array[steps_range] of var ibool: c2_w_clk;
-array[steps_range] of var ibool: c3_w_clk;
+array[steps_range] of var bool: c1_w_clk;
+array[steps_range] of var bool: c2_w_clk;
+array[steps_range] of var bool: c3_w_clk;
 
 array [1..3] of var 1..10: c_size;
 
@@ -63,11 +63,11 @@ constraint base_clk = Union(a1_clk_mapped,Union(a2_clk_mapped,a3_clk_mapped));
 
 
 % the base clock always ticks
-constraint forall (i in steps_range) (base_clk[i]=1);
+constraint forall (i in steps_range) (base_clk[i]=true);
 
 % solving: schedule for minimum buffer size
 solve :: seq_search([int_search(c_size, first_fail, indomain_min, complete)] ++
-    [int_search([a1_clk_mapped[s],a2_clk_mapped[s],a3_clk_mapped[s],
+    [bool_search([a1_clk_mapped[s],a2_clk_mapped[s],a3_clk_mapped[s],
                  a1_clk_start[s],a2_clk_start[s],a3_clk_start[s]], 
                 input_order, indomain_max, complete)
       | s in steps_range]

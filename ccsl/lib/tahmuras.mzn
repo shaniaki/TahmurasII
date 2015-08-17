@@ -1,7 +1,7 @@
 include "globals.mzn";
 include "ccsl.mzn";
-% include "ccsl-hsdf.mzn";
-% include "ccsl-sdf.mzn";
+include "ccsl-hsdf.mzn";
+include "ccsl-sdf.mzn";
 % include "ccsl-taskset.mzn";
 
 %function array [int] of var int: matrix_row(
