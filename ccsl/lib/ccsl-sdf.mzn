@@ -58,11 +58,11 @@ predicate sdf_arc(array[steps_range] of var set of clk_range: run,
     % These 3 are the main constraints
     sdf_output(run,source,write,aux_clk3,out_weight) /\
     sdf_token(run,write,read,aux_clk1,d) /\
-    sdf_input(run,target,read,aux_clk4,in_weight)% /\
+    sdf_input(run,target,read,aux_clk4,in_weight) /\
     % and these model the limited buffer size
-%     sdf_output(run,target,bp_write,aux_clk5,in_weight) /\
-%     sdf_token(run,bp_write,bp_read,aux_clk2,buffer_size) /\
-%     sdf_input(run,source,bp_read,aux_clk6,out_weight)
+    sdf_output(run,target,bp_write,aux_clk5,in_weight) /\
+    sdf_token(run,bp_write,bp_read,aux_clk2,buffer_size) /\
+    sdf_input(run,source,bp_read,aux_clk6,out_weight)
 %     Delay(bp_write,bp_write_conf,buffer_size) /\
 %     NonStrictPrecedes(bp_write_conf,read_conf)
 ;
