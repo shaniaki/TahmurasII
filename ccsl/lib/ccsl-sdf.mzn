@@ -40,15 +40,15 @@ predicate sdf_arc(array[steps_range] of var bool: source,
          array[steps_range] of var bool: bp_write
      } in
     % buffer size should hold at least the initial tokens
-    % buffer_size >= d /\ buffer_size >= out_weight /\
+    buffer_size >= d /\ buffer_size >= out_weight /\
     % These 3 are the main constraints
     sdf_output(source,write,out_weight) /\
     sdf_token(write,read,d) /\
-    sdf_input(target,read,in_weight)% /\
+    sdf_input(target,read,in_weight) /\
     % and these model the limited buffer size
-%     sdf_output(target,bp_write,in_weight) /\
-%     sdf_token(bp_write,bp_read,buffer_size) /\
-%     sdf_input(source,bp_read,out_weight)
+    sdf_output(target,bp_write,in_weight) /\
+    sdf_token(bp_write,bp_read,buffer_size) /\
+    sdf_input(source,bp_read,out_weight)
 %     Delay(bp_write,bp_write_conf,buffer_size) /\
 %     NonStrictPrecedes(bp_write_conf,read_conf)
 ;
