@@ -40,7 +40,7 @@ predicate sdf_arc(array[steps_range] of var bool: source,
          array[steps_range] of var bool: bp_write
      } in
     % buffer size should hold at least the initial tokens
-    buffer_size >= d /\ buffer_size >= out_weight /\
+    (buffer_size >= max(d,out_weight)) /\
     % These 3 are the main constraints
     sdf_output(source,write,out_weight) /\
     sdf_token(write,read,d) /\
@@ -59,6 +59,6 @@ predicate sdf_actor(array[steps_range] of var bool: start_clk,
         array[steps_range] of var bool: mapped_clk,
         var int: wcet
         ) =
-        end_clk = DelayFor(start_clk, wcet, mapped_clk) /\
+        (end_clk = DelayFor(start_clk, wcet, mapped_clk)) /\
         BoundedPrecedes(start_clk,end_clk,1)
 ;

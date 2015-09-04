@@ -1,5 +1,4 @@
-include "../lib2/ccsl-taskset.mzn";
-include "cumulative.mzn";
+include "../lib/tahmuras.mzn";
 
 int: max_steps = 25;
 
@@ -13,18 +12,18 @@ int: max_steps = 25;
 % T3 = (2,6)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-array [steps_range] of var ibool: base_clk;
+array [steps_range] of var bool: base_clk;
 
-array [steps_range] of var ibool: t1_clk_start;
-array [steps_range] of var ibool: t1_clk_end;
-array [steps_range] of var ibool: t2_clk_start;
-array [steps_range] of var ibool: t2_clk_end;
-array [steps_range] of var ibool: t3_clk_start;
-array [steps_range] of var ibool: t3_clk_end;
+array [steps_range] of var bool: t1_clk_start;
+array [steps_range] of var bool: t1_clk_end;
+array [steps_range] of var bool: t2_clk_start;
+array [steps_range] of var bool: t2_clk_end;
+array [steps_range] of var bool: t3_clk_start;
+array [steps_range] of var bool: t3_clk_end;
 
-array [steps_range] of var ibool: t1_clk_mapped;array [steps_range] of var int: t1_clk_mapped_conf; constraint t1_clk_mapped_conf = clk_conf(t1_clk_mapped);
-array [steps_range] of var ibool: t2_clk_mapped;array [steps_range] of var int: t2_clk_mapped_conf; constraint t2_clk_mapped_conf = clk_conf(t2_clk_mapped);
-array [steps_range] of var ibool: t3_clk_mapped;array [steps_range] of var int: t3_clk_mapped_conf; constraint t3_clk_mapped_conf = clk_conf(t3_clk_mapped);
+array [steps_range] of var bool: t1_clk_mapped;array [steps_range] of var int: t1_clk_mapped_conf; constraint t1_clk_mapped_conf = clk_conf(t1_clk_mapped);
+array [steps_range] of var bool: t2_clk_mapped;array [steps_range] of var int: t2_clk_mapped_conf; constraint t2_clk_mapped_conf = clk_conf(t2_clk_mapped);
+array [steps_range] of var bool: t3_clk_mapped;array [steps_range] of var int: t3_clk_mapped_conf; constraint t3_clk_mapped_conf = clk_conf(t3_clk_mapped);
 
 constraint ts_periodic(t1_clk_start,t1_clk_end,t1_clk_mapped,3,0,1);
 constraint ts_periodic(t2_clk_start,t2_clk_end,t2_clk_mapped,4,0,1);

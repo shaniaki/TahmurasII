@@ -60,7 +60,7 @@ predicate SubClock(array[steps_range] of var bool: c1,
 predicate Exclusion(array[steps_range] of var bool: c1,
         array[steps_range] of var bool: c2
     ) =
-    forall (i in steps_range) (not (c1[i] /\ c2[i]))
+    forall (i in steps_range) ((c1[i] /\ c2[i]) = false)
 ;
 
 %% Strict precedence (tested)

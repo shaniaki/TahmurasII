@@ -4,9 +4,9 @@ include "ccsl.mzn";
 
 %% A preemptable periodic task with start and end clocks,
 %% period and offsets in terms of the base time clock and wcet in terms of the mapped clock on the resource
-predicate ts_periodic(array[steps_range] of var ibool: start_clk,
-        array[steps_range] of var ibool: end_clk,
-        array[steps_range] of var ibool: mapped_clk,
+predicate ts_periodic(array[steps_range] of var bool: start_clk,
+        array[steps_range] of var bool: end_clk,
+        array[steps_range] of var bool: mapped_clk,
         var int: period,
         var int: offset,
         var int: wcet
